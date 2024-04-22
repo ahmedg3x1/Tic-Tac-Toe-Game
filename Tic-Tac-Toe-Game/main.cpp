@@ -2,7 +2,7 @@
 
 int main() {
 
-	std::cout << "can you see me :) ? aa";
+	std::cout << "can you see me :) ?";
 
 
 	return 0;
