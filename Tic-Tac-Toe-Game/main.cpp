@@ -6,7 +6,7 @@ const int player_X = 1;
 const int player_O = 2;
 //player_X,player_O can not equal zero,because Empty space = zero
 
-bool AI_Enable = 0;
+bool AI_Enable = true;
 
 int main() {
 	Game game = Game(player_X, player_O, player_X, AI_Enable);
