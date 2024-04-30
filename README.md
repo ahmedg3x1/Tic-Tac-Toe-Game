@@ -1,3 +1,3 @@
 # Tic-Tac-Toe-Game
 
-this is our tic tac toe project
+this is our tic tac toe project.
