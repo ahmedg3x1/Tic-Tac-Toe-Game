@@ -1,0 +1,10 @@
+release/Game.o
+release/entry_menu.o
+release/main.o
+release/login_window.o
+release/profile_menu.o
+release/register_window.o
+release/moc_entry_menu.o
+release/moc_login_window.o
+release/moc_profile_menu.o
+release/moc_register_window.o
