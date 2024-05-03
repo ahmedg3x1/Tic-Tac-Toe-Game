@@ -18,6 +18,10 @@ public:
 private slots:
     void on_profile_button_clicked();
 
+    void on_pvp_button_clicked();
+
+    void on_pvai_button_clicked();
+
 private:
     Ui::entry_menu *ui;
 };
