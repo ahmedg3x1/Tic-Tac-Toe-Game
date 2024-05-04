@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     Game.cpp \
     entry_menu.cpp \
+    game_window.cpp \
     main.cpp \
     login_window.cpp \
     profile_menu.cpp \
@@ -19,12 +20,14 @@ SOURCES += \
 HEADERS += \
     Game.h \
     entry_menu.h \
+    game_window.h \
     login_window.h \
     profile_menu.h \
     register_window.h
 
 FORMS += \
     entry_menu.ui \
+    game_window.ui \
     login_window.ui \
     profile_menu.ui \
     register_window.ui

@@ -49,30 +49,36 @@ OBJECTS_DIR   = release
 
 SOURCES       = ..\Tic-Tac-Toe-Game\Game.cpp \
 		..\Tic-Tac-Toe-Game\entry_menu.cpp \
+		..\Tic-Tac-Toe-Game\game_window.cpp \
 		..\Tic-Tac-Toe-Game\main.cpp \
 		..\Tic-Tac-Toe-Game\login_window.cpp \
 		..\Tic-Tac-Toe-Game\profile_menu.cpp \
 		..\Tic-Tac-Toe-Game\register_window.cpp release\moc_entry_menu.cpp \
+		release\moc_game_window.cpp \
 		release\moc_login_window.cpp \
 		release\moc_profile_menu.cpp \
 		release\moc_register_window.cpp
 OBJECTS       = release/Game.o \
 		release/entry_menu.o \
+		release/game_window.o \
 		release/main.o \
 		release/login_window.o \
 		release/profile_menu.o \
 		release/register_window.o \
 		release/moc_entry_menu.o \
+		release/moc_game_window.o \
 		release/moc_login_window.o \
 		release/moc_profile_menu.o \
 		release/moc_register_window.o
 
 DIST          =  ..\Tic-Tac-Toe-Game\Game.h \
 		..\Tic-Tac-Toe-Game\entry_menu.h \
+		..\Tic-Tac-Toe-Game\game_window.h \
 		..\Tic-Tac-Toe-Game\login_window.h \
 		..\Tic-Tac-Toe-Game\profile_menu.h \
 		..\Tic-Tac-Toe-Game\register_window.h ..\Tic-Tac-Toe-Game\Game.cpp \
 		..\Tic-Tac-Toe-Game\entry_menu.cpp \
+		..\Tic-Tac-Toe-Game\game_window.cpp \
 		..\Tic-Tac-Toe-Game\main.cpp \
 		..\Tic-Tac-Toe-Game\login_window.cpp \
 		..\Tic-Tac-Toe-Game\profile_menu.cpp \
@@ -87,7 +93,7 @@ DESTDIR_TARGET = release\Tic-Tac-Toe-Game.exe
 first: all
 all: Makefile.Release  release/Tic-Tac-Toe-Game.exe
 
-release/Tic-Tac-Toe-Game.exe: D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libQt5Widgets.a D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libQt5Gui.a D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libQt5Core.a D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libqtmain.a ui_entry_menu.h ui_login_window.h ui_profile_menu.h ui_register_window.h $(OBJECTS) 
+release/Tic-Tac-Toe-Game.exe: D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libQt5Widgets.a D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libQt5Gui.a D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libQt5Core.a D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/libqtmain.a ui_entry_menu.h ui_game_window.h ui_login_window.h ui_profile_menu.h ui_register_window.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.Tic-Tac-Toe-Game.Release  $(LIBS)
 
 qmake: FORCE
@@ -96,10 +102,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Tic-Tac-Toe-Game.zip $(SOURCES) $(DIST) ..\Tic-Tac-Toe-Game\Tic-Tac-Toe-Game.pro D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\spec_pre.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\qdevice.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\device_config.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\sanitize.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\gcc-base.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\g++-base.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\angle.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\windows-vulkan.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\g++-win32.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\qconfig.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3drender.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axbase.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axserver.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_core.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_core_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_dbus.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_designer.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gui.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_help.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_help_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_location.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_location_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_network.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_network_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_nfc.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_opengl.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioning.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qml.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quick.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_repparser.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_scxml.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sensors.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialport.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sql.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_svg.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_testlib.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_uitools.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_websockets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_widgets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_winextras.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xml.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qt_functions.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qt_config.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\win32-g++\qmake.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\exclusive_builds.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\toolchain.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\default_pre.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\default_pre.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\resolve_config.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\exclusive_builds_post.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\default_post.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\build_pass.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qml_debug.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\precompile_header.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\warn_on.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qt.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\resources.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\moc.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\opengl.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\uic.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qmake_use.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\file_copies.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\windows.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\testcase_targets.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\exceptions.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\yacc.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\lex.prf ..\Tic-Tac-Toe-Game\Tic-Tac-Toe-Game.pro D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\Qt5Widgets.prl D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\Qt5Gui.prl D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\Qt5Core.prl D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\qtmain.prl    D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\data\dummy.cpp ..\Tic-Tac-Toe-Game\Game.h ..\Tic-Tac-Toe-Game\entry_menu.h ..\Tic-Tac-Toe-Game\login_window.h ..\Tic-Tac-Toe-Game\profile_menu.h ..\Tic-Tac-Toe-Game\register_window.h  ..\Tic-Tac-Toe-Game\Game.cpp ..\Tic-Tac-Toe-Game\entry_menu.cpp ..\Tic-Tac-Toe-Game\main.cpp ..\Tic-Tac-Toe-Game\login_window.cpp ..\Tic-Tac-Toe-Game\profile_menu.cpp ..\Tic-Tac-Toe-Game\register_window.cpp ..\Tic-Tac-Toe-Game\entry_menu.ui ..\Tic-Tac-Toe-Game\login_window.ui ..\Tic-Tac-Toe-Game\profile_menu.ui ..\Tic-Tac-Toe-Game\register_window.ui    
+	$(ZIP) Tic-Tac-Toe-Game.zip $(SOURCES) $(DIST) ..\Tic-Tac-Toe-Game\Tic-Tac-Toe-Game.pro D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\spec_pre.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\qdevice.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\device_config.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\sanitize.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\gcc-base.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\g++-base.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\angle.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\windows-vulkan.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\common\g++-win32.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\qconfig.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3drender.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axbase.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axserver.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_core.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_core_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_dbus.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_designer.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gui.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_help.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_help_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_location.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_location_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_network.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_network_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_nfc.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_opengl.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioning.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qml.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quick.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_repparser.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_scxml.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sensors.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialport.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sql.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_svg.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_testlib.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_uitools.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_websockets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_widgets.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_winextras.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xml.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qt_functions.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qt_config.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\win32-g++\qmake.conf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\exclusive_builds.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\toolchain.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\default_pre.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\default_pre.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\resolve_config.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\exclusive_builds_post.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\default_post.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\build_pass.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qml_debug.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\precompile_header.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\warn_on.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qt.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\resources.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\moc.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\opengl.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\uic.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\qmake_use.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\file_copies.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\win32\windows.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\testcase_targets.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\exceptions.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\yacc.prf D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\lex.prf ..\Tic-Tac-Toe-Game\Tic-Tac-Toe-Game.pro D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\Qt5Widgets.prl D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\Qt5Gui.prl D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\Qt5Core.prl D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\lib\qtmain.prl    D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\data\dummy.cpp ..\Tic-Tac-Toe-Game\Game.h ..\Tic-Tac-Toe-Game\entry_menu.h ..\Tic-Tac-Toe-Game\game_window.h ..\Tic-Tac-Toe-Game\login_window.h ..\Tic-Tac-Toe-Game\profile_menu.h ..\Tic-Tac-Toe-Game\register_window.h  ..\Tic-Tac-Toe-Game\Game.cpp ..\Tic-Tac-Toe-Game\entry_menu.cpp ..\Tic-Tac-Toe-Game\game_window.cpp ..\Tic-Tac-Toe-Game\main.cpp ..\Tic-Tac-Toe-Game\login_window.cpp ..\Tic-Tac-Toe-Game\profile_menu.cpp ..\Tic-Tac-Toe-Game\register_window.cpp ..\Tic-Tac-Toe-Game\entry_menu.ui ..\Tic-Tac-Toe-Game\game_window.ui ..\Tic-Tac-Toe-Game\login_window.ui ..\Tic-Tac-Toe-Game\profile_menu.ui ..\Tic-Tac-Toe-Game\register_window.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\Game.o release\entry_menu.o release\main.o release\login_window.o release\profile_menu.o release\register_window.o release\moc_entry_menu.o release\moc_login_window.o release\moc_profile_menu.o release\moc_register_window.o
+	-$(DEL_FILE) release\Game.o release\entry_menu.o release\game_window.o release\main.o release\login_window.o release\profile_menu.o release\register_window.o release\moc_entry_menu.o release\moc_game_window.o release\moc_login_window.o release\moc_profile_menu.o release\moc_register_window.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -124,9 +130,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -W -Wextra -dM -E -o release\moc_predefs.h D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_entry_menu.cpp release/moc_login_window.cpp release/moc_profile_menu.cpp release/moc_register_window.cpp
+compiler_moc_header_make_all: release/moc_entry_menu.cpp release/moc_game_window.cpp release/moc_login_window.cpp release/moc_profile_menu.cpp release/moc_register_window.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_entry_menu.cpp release\moc_login_window.cpp release\moc_profile_menu.cpp release\moc_register_window.cpp
+	-$(DEL_FILE) release\moc_entry_menu.cpp release\moc_game_window.cpp release\moc_login_window.cpp release\moc_profile_menu.cpp release\moc_register_window.cpp
 release/moc_entry_menu.cpp: ../Tic-Tac-Toe-Game/entry_menu.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMainWindow \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmainwindow.h \
@@ -237,6 +243,117 @@ release/moc_entry_menu.cpp: ../Tic-Tac-Toe-Game/entry_menu.h \
 		release/moc_predefs.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/bin/moc.exe
 	D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/1/Documents/my documents/faculty/EECE/projects/second year/tic tac toe/project/Tic-Tac-Toe-Game/build-Tic-Tac-Toe-Game-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/release/moc_predefs.h" -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-g++ -I"D:/1/Documents/my documents/faculty/EECE/projects/second year/tic tac toe/project/Tic-Tac-Toe-Game/Tic-Tac-Toe-Game" -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtANGLE -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore -I. -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Tic-Tac-Toe-Game\entry_menu.h -o release\moc_entry_menu.cpp
+
+release/moc_game_window.cpp: ../Tic-Tac-Toe-Game/game_window.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMainWindow \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmainwindow.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtwidgetsglobal.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtguiglobal.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qglobal.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qconfig.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qtcore-config.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsystemdetection.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qprocessordetection.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcompilerdetection.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qtypeinfo.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsysinfo.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qlogging.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qflags.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qbasicatomic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qgenericatomic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic_msvc.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qglobalstatic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmutex.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qnumeric.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qversiontagging.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtgui-config.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtwidgets-config.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qwindowdefs.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobjectdefs.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qnamespace.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobject.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstring.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qchar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qbytearray.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qrefcount.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qarraydata.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringliteral.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringalgorithms.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringview.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringbuilder.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qlist.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qalgorithms.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qiterator.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qhashfunctions.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qpair.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qbytearraylist.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringlist.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qregexp.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringmatcher.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreevent.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qscopedpointer.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmetatype.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qvarlengtharray.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcontainerfwd.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobject_impl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmargins.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpaintdevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qrect.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsize.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qpoint.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpalette.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qcolor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qrgb.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qrgba64.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qbrush.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qvector.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qmatrix.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpolygon.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qregion.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qdatastream.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qiodevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qline.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtransform.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpainterpath.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qimage.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpixelformat.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpixmap.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsharedpointer.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qshareddata.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qhash.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qfont.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qfontmetrics.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qfontinfo.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qsizepolicy.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qcursor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qkeysequence.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qevent.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qvariant.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmap.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qdebug.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qtextstream.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qlocale.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qset.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcontiguouscache.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qurl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qurlquery.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qfile.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qfiledevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qvector2d.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qicon.h \
+		release/moc_predefs.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/bin/moc.exe
+	D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/1/Documents/my documents/faculty/EECE/projects/second year/tic tac toe/project/Tic-Tac-Toe-Game/build-Tic-Tac-Toe-Game-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/release/moc_predefs.h" -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-g++ -I"D:/1/Documents/my documents/faculty/EECE/projects/second year/tic tac toe/project/Tic-Tac-Toe-Game/Tic-Tac-Toe-Game" -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtANGLE -ID:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore -I. -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/installations/Qt/Qt5.12.12/Tools/mingw730_64/x86_64-w64-mingw32/include ..\Tic-Tac-Toe-Game\game_window.h -o release\moc_game_window.cpp
 
 release/moc_login_window.cpp: ../Tic-Tac-Toe-Game/login_window.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMainWindow \
@@ -575,12 +692,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_entry_menu.h ui_login_window.h ui_profile_menu.h ui_register_window.h
+compiler_uic_make_all: ui_entry_menu.h ui_game_window.h ui_login_window.h ui_profile_menu.h ui_register_window.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_entry_menu.h ui_login_window.h ui_profile_menu.h ui_register_window.h
+	-$(DEL_FILE) ui_entry_menu.h ui_game_window.h ui_login_window.h ui_profile_menu.h ui_register_window.h
 ui_entry_menu.h: ../Tic-Tac-Toe-Game/entry_menu.ui \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/bin/uic.exe
 	D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\bin\uic.exe ..\Tic-Tac-Toe-Game\entry_menu.ui -o ui_entry_menu.h
+
+ui_game_window.h: ../Tic-Tac-Toe-Game/game_window.ui \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/bin/uic.exe
+	D:\installations\Qt\Qt5.12.12\5.12.12\mingw73_64\bin\uic.exe ..\Tic-Tac-Toe-Game\game_window.ui -o ui_game_window.h
 
 ui_login_window.h: ../Tic-Tac-Toe-Game/login_window.ui \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/bin/uic.exe
@@ -717,8 +838,137 @@ release/entry_menu.o: ../Tic-Tac-Toe-Game/entry_menu.cpp ../Tic-Tac-Toe-Game/ent
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qicon.h \
 		ui_entry_menu.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QVariant \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QApplication \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMenuBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenubar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenu.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qaction.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qactiongroup.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QStatusBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qstatusbar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QWidget \
 		../Tic-Tac-Toe-Game/profile_menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\entry_menu.o ..\Tic-Tac-Toe-Game\entry_menu.cpp
+
+release/game_window.o: ../Tic-Tac-Toe-Game/game_window.cpp ../Tic-Tac-Toe-Game/game_window.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMainWindow \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmainwindow.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtwidgetsglobal.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtguiglobal.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qglobal.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qconfig.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qtcore-config.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsystemdetection.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qprocessordetection.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcompilerdetection.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qtypeinfo.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsysinfo.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qlogging.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qflags.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qbasicatomic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qgenericatomic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qatomic_msvc.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qglobalstatic.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmutex.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qnumeric.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qversiontagging.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtgui-config.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtwidgets-config.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qwindowdefs.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobjectdefs.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qnamespace.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobject.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstring.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qchar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qbytearray.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qrefcount.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qarraydata.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringliteral.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringalgorithms.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringview.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringbuilder.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qlist.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qalgorithms.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qiterator.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qhashfunctions.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qpair.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qbytearraylist.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringlist.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qregexp.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qstringmatcher.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreevent.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qscopedpointer.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmetatype.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qvarlengtharray.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcontainerfwd.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qobject_impl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmargins.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpaintdevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qrect.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsize.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qpoint.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpalette.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qcolor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qrgb.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qrgba64.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qbrush.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qvector.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qmatrix.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpolygon.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qregion.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qdatastream.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qiodevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qline.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtransform.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpainterpath.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qimage.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpixelformat.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpixmap.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsharedpointer.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qshareddata.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qhash.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qfont.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qfontmetrics.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qfontinfo.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qsizepolicy.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qcursor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qkeysequence.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qevent.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qvariant.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qmap.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qdebug.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qtextstream.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qlocale.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qset.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcontiguouscache.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qurl.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qurlquery.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qfile.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qfiledevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qvector2d.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qicon.h \
+		ui_game_window.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\game_window.o ..\Tic-Tac-Toe-Game\game_window.cpp
 
 release/main.o: ../Tic-Tac-Toe-Game/main.cpp ../Tic-Tac-Toe-Game/login_window.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMainWindow \
@@ -947,6 +1197,47 @@ release/login_window.o: ../Tic-Tac-Toe-Game/login_window.cpp ../Tic-Tac-Toe-Game
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qicon.h \
 		ui_login_window.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QVariant \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QApplication \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QComboBox \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qcombobox.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qstyleoption.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qvalidator.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qregularexpression.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qslider.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractslider.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qstyle.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabbar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qrubberband.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QLabel \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpen.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextoption.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMenuBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenubar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenu.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qaction.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qactiongroup.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QStatusBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qstatusbar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QWidget \
 		../Tic-Tac-Toe-Game/register_window.h \
 		../Tic-Tac-Toe-Game/entry_menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\login_window.o ..\Tic-Tac-Toe-Game\login_window.cpp
@@ -1058,7 +1349,35 @@ release/profile_menu.o: ../Tic-Tac-Toe-Game/profile_menu.cpp ../Tic-Tac-Toe-Game
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtouchdevice.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qicon.h \
-		ui_profile_menu.h
+		ui_profile_menu.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QVariant \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QApplication \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QLabel \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpen.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextoption.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMenuBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenubar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenu.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qaction.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qactiongroup.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QStatusBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qstatusbar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\profile_menu.o ..\Tic-Tac-Toe-Game\profile_menu.cpp
 
 release/register_window.o: ../Tic-Tac-Toe-Game/register_window.cpp ../Tic-Tac-Toe-Game/register_window.h \
@@ -1169,11 +1488,42 @@ release/register_window.o: ../Tic-Tac-Toe-Game/register_window.cpp ../Tic-Tac-To
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qicon.h \
 		ui_register_window.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/QVariant \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QApplication \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qcoreapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtCore/qeventloop.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qguiapplication.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QLabel \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qlabel.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qframe.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QLineEdit \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qlineedit.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextcursor.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextformat.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qpen.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtGui/qtextoption.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QMenuBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenubar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qmenu.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qaction.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qactiongroup.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QPushButton \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qpushbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QStatusBar \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/qstatusbar.h \
+		D:/installations/Qt/Qt5.12.12/5.12.12/mingw73_64/include/QtWidgets/QWidget \
 		../Tic-Tac-Toe-Game/entry_menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\register_window.o ..\Tic-Tac-Toe-Game\register_window.cpp
 
 release/moc_entry_menu.o: release/moc_entry_menu.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_entry_menu.o release\moc_entry_menu.cpp
+
+release/moc_game_window.o: release/moc_game_window.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_game_window.o release\moc_game_window.cpp
 
 release/moc_login_window.o: release/moc_login_window.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_login_window.o release\moc_login_window.cpp

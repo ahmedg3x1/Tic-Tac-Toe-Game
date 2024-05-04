@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef LOGIN_WINDOW_H
+#define LOGIN_WINDOW_H
 
 #include <QMainWindow>
 
@@ -27,4 +27,4 @@ private:
 
 
 };
-#endif // MAINWINDOW_H
+#endif // LOGIN_WINDOW_H
