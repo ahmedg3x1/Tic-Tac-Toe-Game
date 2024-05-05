@@ -6,7 +6,18 @@ game_window::game_window(QWidget *parent)
     , ui(new Ui::game_window)
 {
     ui->setupUi(this);
+    myparent = parent;
     isPlayerXTurn = true;       // Initialize the player turn to 'X'
+
+    board[0][0] = ui->Slot_1;
+    board[0][1] = ui->Slot_2;
+    board[0][2] = ui->Slot_3;
+    board[1][0] = ui->Slot_4;
+    board[1][1] = ui->Slot_5;
+    board[1][2] = ui->Slot_6;
+    board[2][0] = ui->Slot_7;
+    board[2][1] = ui->Slot_8;
+    board[2][2] = ui->Slot_9;
 }
 
 game_window::~game_window()
@@ -118,6 +129,22 @@ void game_window::on_Slot_9_clicked()
         ui->Slot_9->setText(isPlayerXTurn ? "X" : "O");
         // Toggle player turn
         isPlayerXTurn = !isPlayerXTurn;
+    }
+}
+
+
+void game_window::on_Home_clicked()
+{
+    close();
+    myparent->show();
+}
+
+
+void game_window::on_Play_Again_clicked()
+{
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++)
+            board[i][j]->setText("");
     }
 }
 

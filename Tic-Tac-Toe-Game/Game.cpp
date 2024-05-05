@@ -1,4 +1,5 @@
 #include "Game.h"
+
 Game::Game(int playerOne, int playerTwo, int firstToPlay, bool AI_Enable) {
 	player_1 = playerOne;
 	player_2 = playerTwo;
@@ -57,7 +58,9 @@ void Game::showBoard() {
 
 }
 
-void Game::showLog() {
+void Game::showLog(int firstPlayer, int timelog[3][3]) {
+	
+
 	int logBoard[3][3] = {};
 
 	int moveStorage[9][2];
@@ -76,18 +79,15 @@ void Game::showLog() {
 	}
 
 	int row, column;
-	bool showlog;
+	int currentPlayer = firstPlayer;
 
-	std::cout << "enter 1 to show log or 0 to exit : ";
-	std::cin >> showlog;
 	std::cin.ignore();
-
-	if (showlog) {
+	
 		for (int i = 0; i < 9; i++) {
 			if (moveStorage[i][0] != -1) {
 				row = moveStorage[i][0];
 				column = moveStorage[i][1];
-				logBoard[row][column] = board[row][column];
+				logBoard[row][column] = currentPlayer;
 
 				std::cout << std::endl;
 				for (int i = 0; i < 3; i++) {
@@ -97,11 +97,9 @@ void Game::showLog() {
 				}
 				std::cout << "press enter to cont....";
 				std::cin.ignore();
+				currentPlayer = currentPlayer != player_1 ? player_1 : player_2; //Switch Players
 			}
 		}
-
-	}
-
 }
 //-------------------------------the previous to be edited when GUI is finished----------------------------------------
 

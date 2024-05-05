@@ -30,11 +30,16 @@ void entry_menu::on_pvp_button_clicked()
 
 
     */
+    my_game_window = new game_window(this);
+    hide();
+    my_game_window->show();
 }
 
 
 void entry_menu::on_pvai_button_clicked()
 {
-
+    my_game_window = new game_window(this);
+    hide();
+    my_game_window->show();
 }
 

@@ -2,6 +2,7 @@
 #define ENTRY_MENU_H
 
 #include <QMainWindow>
+#include "game_window.h"
 
 namespace Ui {
 class entry_menu;
@@ -24,6 +25,7 @@ private slots:
 
 private:
     Ui::entry_menu *ui;
+    game_window *my_game_window;
 };
 
 #endif // ENTRY_MENU_H

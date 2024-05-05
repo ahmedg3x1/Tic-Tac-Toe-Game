@@ -2,6 +2,7 @@
 #define GAME_WINDOW_H
 
 #include <QMainWindow>
+#include <qpushbutton.h>
 #include <Game.h>
 
 QT_BEGIN_NAMESPACE
@@ -37,9 +38,16 @@ private slots:
 
     void on_Slot_9_clicked();
 
+    void on_Home_clicked();
+
+    void on_Play_Again_clicked();
+
 private:
     Ui::game_window *ui;
+    QWidget* myparent;
     bool isPlayerXTurn; // Variable to track current player's turn
+
+    QPushButton* board[3][3];
 };
 
 #endif // GAME_WINDOW_H
