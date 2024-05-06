@@ -20,6 +20,10 @@ private slots:
 
     void on_save_button_clicked();
 
+    void on_profile_menu_destroyed();
+
+    void on_profile_menu_destroyed(QObject *arg1);
+
 private:
     Ui::profile_menu *ui;
 };

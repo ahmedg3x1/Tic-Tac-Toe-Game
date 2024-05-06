@@ -24,3 +24,14 @@ void profile_menu::on_save_button_clicked()
     this->hide();
 }
 
+
+void profile_menu::on_profile_menu_destroyed()
+{
+
+}
+
+
+void profile_menu::on_profile_menu_destroyed(QObject *arg1)
+{
+
+}

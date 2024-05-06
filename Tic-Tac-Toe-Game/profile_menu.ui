@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>profile_menu</class>
  <widget class="QMainWindow" name="profile_menu">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>profile</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -97,7 +100,7 @@
      <rect>
       <x>60</x>
       <y>170</y>
-      <width>101</width>
+      <width>111</width>
       <height>16</height>
      </rect>
     </property>
@@ -108,7 +111,7 @@
    <widget class="QLabel" name="wins_label">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>190</x>
       <y>170</y>
       <width>55</width>
       <height>16</height>
@@ -123,7 +126,7 @@
      <rect>
       <x>60</x>
       <y>200</y>
-      <width>101</width>
+      <width>111</width>
       <height>16</height>
      </rect>
     </property>
@@ -136,7 +139,7 @@
      <rect>
       <x>60</x>
       <y>230</y>
-      <width>101</width>
+      <width>111</width>
       <height>16</height>
      </rect>
     </property>
@@ -147,7 +150,7 @@
    <widget class="QLabel" name="lose_label">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>190</x>
       <y>200</y>
       <width>55</width>
       <height>16</height>
@@ -160,7 +163,7 @@
    <widget class="QLabel" name="draw_label">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>190</x>
       <y>230</y>
       <width>55</width>
       <height>16</height>
