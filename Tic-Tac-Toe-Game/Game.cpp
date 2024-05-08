@@ -12,17 +12,20 @@ Game::Game(int playerOne, int playerTwo, int firstToPlay, bool AI_Enable) {
 #include <iostream> 
 
 void Game::game_start() {
+	for (int i = 0; i < 3; i++) 
+		for (int j = 0; j < 3; j++)
+			board[i][j] = 0;
 	int row, coulmn;
 	int currentPlayer = firstPlayer;
 	showBoard();
 	while (gameState == Continue_State) {
 		if (aiEnable && currentPlayer == player_2) {
 			AiMove();
-			std::cout << "player - " << currentPlayer << " --Ai finished-- ";
+			std::cout << "player - 2 --Ai finished-- ";
 
 		}
 		else {
-			std::cout << "player - " << currentPlayer << "--Enter row[0:2] coulmen[0:2] : ";
+			std::cout << "player - " << ((currentPlayer==player_1) ? 1 : 2) << "--Enter row[0:2] coulmen[0:2] : ";
 			std::cin >> row >> coulmn;
 
 			bool validMove = playerMove(row, coulmn, currentPlayer);
@@ -43,6 +46,7 @@ void Game::game_start() {
 		gameState = checkGameState();
 	}
 	std::cout << "Game State: " << gameState << " winner :" << winner << std::endl;
+	std::cout <<  "=================================================== " << std::endl << std::endl;
 }
 
 
@@ -58,49 +62,7 @@ void Game::showBoard() {
 
 }
 
-void Game::showLog(int firstPlayer, int timelog[3][3]) {
-	
 
-	int logBoard[3][3] = {};
-
-	int moveStorage[9][2];
-	for (int i = 0; i < 9; i++) {
-		moveStorage[i][0] = -1;
-		moveStorage[i][1] = -1;
-	}
-
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			if (timelog[i][j] != 0) {
-				moveStorage[timelog[i][j] - 1][0] = i;
-				moveStorage[timelog[i][j] - 1][1] = j;
-			}
-		}
-	}
-
-	int row, column;
-	int currentPlayer = firstPlayer;
-
-	std::cin.ignore();
-	
-		for (int i = 0; i < 9; i++) {
-			if (moveStorage[i][0] != -1) {
-				row = moveStorage[i][0];
-				column = moveStorage[i][1];
-				logBoard[row][column] = currentPlayer;
-
-				std::cout << std::endl;
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < 3; j++)
-						std::cout << logBoard[i][j] << "  ";
-					std::cout << std::endl;
-				}
-				std::cout << "press enter to cont....";
-				std::cin.ignore();
-				currentPlayer = currentPlayer != player_1 ? player_1 : player_2; //Switch Players
-			}
-		}
-}
 //-------------------------------the previous to be edited when GUI is finished----------------------------------------
 
 

@@ -1,4 +1,5 @@
 #pragma once
+
 class Game
 {
 public:	
@@ -29,7 +30,7 @@ public:
 	
 	void game_start();
 	void showBoard();
-	void showLog(int firstPlayer, int timelog[3][3]);
+	
 	bool playerMove(int row, int column, int player);
 	int checkGameState();
 	int minimax(bool isMaximizingPlayer, int alpha, int beta);

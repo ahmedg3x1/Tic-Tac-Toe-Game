@@ -3,6 +3,7 @@
 #include <iostream> 
 #include <vector>
 #include <sstream>
+#include <cstring>
 using namespace std;
 
 class Database {
@@ -26,6 +27,7 @@ public:
 	void registerUser();
 	bool login(UserData& loggedInUser);
 	void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate);
-	void viewHistory(const UserData& user, int& firstPlayer, int log[3][3]);
+    void viewHistory(const UserData& user);
+    string md5(std::string dat);
 };
 
