@@ -30,7 +30,7 @@ void saveUserData(const UserData& user);
 void loadUserData(UserData& user, const string& filename);
 register_result registerUser(const string& username, const string& password);
 login_result login(UserData& loggedInUser);
-void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate);
+void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate, int accountHolder);
 void viewHistory(const UserData& user);
 int wins(const string& username);
 int loses(const string& username);

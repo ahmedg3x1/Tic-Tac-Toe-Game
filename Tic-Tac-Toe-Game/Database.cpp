@@ -15,7 +15,7 @@ void saveUserData(const UserData& user) {
     }
     file << user.username << " " << user.passwordHash << endl; // Save username and password hash
     for (const auto& game : user.games) {
-        file << game.time << " " << game.won << " " << game.firstPlayer << " " << game.gamestate << " ";
+        file << game.accountHolder << " " << game.time << " " << game.won << " " << game.firstPlayer << " " << game.gamestate << " ";
         for (int i = 0; i < 9; ++i) {
             file << game.moves[i] << " "; // Save moves array
         }
@@ -39,7 +39,7 @@ void loadUserData(UserData& user, const string& filename) {
     while (getline(file, line)) {
         stringstream ss(line);
         GameRecord game;
-        ss >> game.time >> game.won >> game.firstPlayer >> game.gamestate;
+        ss >> game.accountHolder >> game.time >> game.won >> game.firstPlayer >> game.gamestate;
         for (int i = 0; i < 9; ++i) {
             ss >> game.moves[i]; // Load moves array
         }
@@ -101,7 +101,7 @@ login_result login(UserData& loggedInUser) {
     cout << "Invalid username or password." << endl;
     return database_error;
 }
-void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate) {
+void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate, int accountHolder) {
     // Implement tic-tac-toe game logic here
     // After the game, save the game record to the user's data
     GameRecord game;
@@ -109,6 +109,7 @@ void playGame(UserData& user, const int moves[3][3], int won, string time, int f
     game.time = time;
     game.firstPlayer = firstPlayer;
     game.gamestate = gamestate;
+	game.accountHolder = accountHolder;
 
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) 
@@ -175,6 +176,7 @@ void viewHistory(const UserData& user) {
         for (const auto& game : user.games) {
             cout <<  c++ << " -  Date: " << game.time << ", Won: " << game.won << ", FirsttoPlay: " << game.firstPlayer << ", GameState: " << game.gamestate << endl;
            }
+		cout << "accountHolder  " << "wins: " << wins() << " loses: " << loses() << " ties :" << ties() << endl;   
         int b = 0;
 		int firstPlayer;
 		int log[3][3];
