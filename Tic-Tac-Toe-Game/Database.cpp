@@ -1,5 +1,5 @@
 #include "Database.h"
-
+#include <string>
 
 // Function to check if a file exists
 bool fileExists(const string& filename) {
@@ -50,12 +50,26 @@ void loadUserData(UserData& user, const string& filename) {
 
 register_result registerUser(const string& username, const string& password) {
     UserData newUser;
+    if(username.length() == 0)
+    {
+        return null_user;
+    }
 
     // Check if the username already exists
     if (fileExists(username + "_data.txt")) {
         cout << "Username already exists. Please choose a different username." << endl;
         return user_is_already_registered; // Exit the function if username already exists
     }
+
+    if(password.length() ==0)
+    {
+        return null_password;
+    }
+    if(password.length() < 4)
+    {
+        return weak_password;
+    }
+
 
     string passwordHash = md5(password); // Hash password
     newUser.username = username;

@@ -4,15 +4,17 @@
 #include <QString>
 #include <string>
 
+extern QString player_1_name, player_2_name;
+
 profile_menu::profile_menu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::profile_menu)
 {
     ui->setupUi(this);
-    //ui->user_textbox->text() =  QString::fromStdString(my_database.userdata.username);
-    //ui->wins_label->text() =  QString::fromStdString(getwins());
-    //ui->draw_label->text() =  QString::fromStdString(getdraws());
-    //ui->lose_label->text() =  QString::fromStdString(getloses());
+    ui->user_textbox->setText(player_1_name);
+    //ui->wins_label->setText(QString(getwins()));
+    //ui->draw_label->setText(QString(getdraws()));
+    //ui->lose_label->setText(QString(getloses()));
 }
 
 profile_menu::~profile_menu()
