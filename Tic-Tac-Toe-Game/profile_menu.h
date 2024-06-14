@@ -16,10 +16,6 @@ public:
     ~profile_menu();
 
 private slots:
-    void on_cancel_button_clicked();
-
-    void on_save_button_clicked();
-
     void on_profile_menu_destroyed();
 
     void on_profile_menu_destroyed(QObject *arg1);

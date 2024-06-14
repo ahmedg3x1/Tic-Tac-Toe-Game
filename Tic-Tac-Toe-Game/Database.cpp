@@ -176,7 +176,7 @@ void viewHistory(const UserData& user) {
         for (const auto& game : user.games) {
             cout <<  c++ << " -  Date: " << game.time << ", Won: " << game.won << ", FirsttoPlay: " << game.firstPlayer << ", GameState: " << game.gamestate << endl;
            }
-		cout << "accountHolder  " << "wins: " << wins() << " loses: " << loses() << " ties :" << ties() << endl;   
+        cout << "accountHolder  " << "wins: " << wins(user.username) << " loses: " << loses(user.username) << " ties :" << ties(user.username) << endl;
         int b = 0;
 		int firstPlayer;
 		int log[3][3];

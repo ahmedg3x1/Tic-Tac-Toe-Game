@@ -34,7 +34,9 @@ void entry_menu::on_pvp_button_clicked()
 
     */
     my_login_window = new login_window(this, false);
-    hide();
+    my_login_window->setWindowModality(Qt::ApplicationModal);
+    //hide();
+
     my_login_window->show();
 }
 

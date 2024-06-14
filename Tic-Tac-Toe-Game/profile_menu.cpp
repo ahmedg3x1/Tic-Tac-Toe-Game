@@ -22,18 +22,6 @@ profile_menu::~profile_menu()
     delete ui;
 }
 
-void profile_menu::on_cancel_button_clicked()
-{
-    this->hide();
-}
-
-
-void profile_menu::on_save_button_clicked()
-{
-    //change_password(ui->new_password->text().toStdString());
-    this->hide();
-}
-
 
 void profile_menu::on_profile_menu_destroyed()
 {
