@@ -7,8 +7,7 @@ extern QString player_1_tic,  player_2_tic;
 game_window::game_window(QWidget *parent, bool PVAI,
                                           int Player_One_Tic,
                                           int Player_Two_Tic)
-    : QMainWindow(parent)
-    , ui(new Ui::game_window)
+    : ui(new Ui::game_window)
     , aiEnable(PVAI)
 {
     ui->setupUi(this);

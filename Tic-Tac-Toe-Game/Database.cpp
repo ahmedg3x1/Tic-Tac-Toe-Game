@@ -55,6 +55,13 @@ register_result registerUser(const string& username, const string& password) {
         return null_user;
     }
 
+    for (char c : username) {
+        if (c == ' ') { // Check for space character
+            return bad_user;
+            cout<<"bad user is here";
+        }
+    }
+
     // Check if the username already exists
     if (fileExists(username + "_data.txt")) {
         cout << "Username already exists. Please choose a different username." << endl;

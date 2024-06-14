@@ -7,7 +7,7 @@
 using namespace std;
 
 enum login_result {user_wrong,login_correct,password_wrong,database_error};
-enum register_result {null_user,register_correct,null_password,weak_password,user_is_already_registered};
+enum register_result {null_user,register_correct,null_password,weak_password,user_is_already_registered,bad_user};
 
 
 struct GameRecord {
