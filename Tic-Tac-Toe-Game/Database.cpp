@@ -2,12 +2,12 @@
 
 
 // Function to check if a file exists
-bool Database::fileExists(const string& filename) {
+bool fileExists(const string& filename) {
     ifstream file(filename);
     return file.good();
 }
 
-void Database::saveUserData(const UserData& user) {
+void saveUserData(const UserData& user) {
     ofstream file(user.username + "_data.txt");
     if (!file.is_open()) {
         cerr << "Error: Unable to open file for writing." << endl;
@@ -25,7 +25,7 @@ void Database::saveUserData(const UserData& user) {
 }
 
 // Function to load user data from a file
-void Database::loadUserData(UserData& user, const string& filename) {
+void loadUserData(UserData& user, const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
         cerr << "Error: Unable to open file for reading." << endl;
@@ -48,13 +48,13 @@ void Database::loadUserData(UserData& user, const string& filename) {
     file.close();
 }
 
-void Database::registerUser(const string& username, const string& password) {
+register_result registerUser(const string& username, const string& password) {
     UserData newUser;
 
     // Check if the username already exists
     if (fileExists(username + "_data.txt")) {
         cout << "Username already exists. Please choose a different username." << endl;
-        return; // Exit the function if username already exists
+        return user_is_already_registered; // Exit the function if username already exists
     }
 
     string passwordHash = md5(password); // Hash password
@@ -63,9 +63,10 @@ void Database::registerUser(const string& username, const string& password) {
     newUser.games.clear(); // Initialize games as empty vector
     saveUserData(newUser);
     cout << "User registered successfully!" << endl;
+    return register_correct;
 }
 
-login_result Database::login(UserData& loggedInUser) {
+login_result login(UserData& loggedInUser) {
     string username = loggedInUser.username, password = loggedInUser.passwordHash;
     string passwordHash = md5(password); // Hash password
     string filename = username + "_data.txt";
@@ -77,8 +78,8 @@ login_result Database::login(UserData& loggedInUser) {
     loadUserData(loggedInUser, filename); // Load user data
     if (loggedInUser.passwordHash == passwordHash) {
         cout << "Login successful!" << endl;
-        return correct;
-        userdata.username = username;
+        return login_correct;
+        //in this case the correct username will be the one that was sent
     }else
     {
         return password_wrong;
@@ -86,7 +87,7 @@ login_result Database::login(UserData& loggedInUser) {
     cout << "Invalid username or password." << endl;
     return database_error;
 }
-void Database::playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate) {
+void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate) {
     // Implement tic-tac-toe game logic here
     // After the game, save the game record to the user's data
     GameRecord game;
@@ -149,7 +150,7 @@ void showLog(int firstPlayer, int timelog[3][3]) {
 	}
 }
 
-void Database::viewHistory(const UserData& user) {
+void viewHistory(const UserData& user) {
     cout << "User: " << user.username << endl;
     if (user.games.empty()) {
         cout << "No game history available." << endl;
@@ -421,7 +422,7 @@ static char hb2hex(unsigned char hb) {
 }
 
 
-string Database::md5(string data) {
+string md5(string data) {
 	const void* dat = data.c_str();
 	size_t len = data.length();
 

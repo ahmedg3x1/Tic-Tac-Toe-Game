@@ -6,8 +6,8 @@
 #include <cstring>
 using namespace std;
 
-enum login_result {user_wrong,correct,password_wrong,database_error};
-
+enum login_result {user_wrong,login_correct,password_wrong,database_error};
+enum register_result {null_user,register_correct,null_password,weak_password,user_is_already_registered};
 
 
 struct GameRecord {
@@ -24,17 +24,13 @@ struct UserData {
     vector<GameRecord> games; // Use vector to store multiple game records
 };
 
-class Database {
-public:
+bool fileExists(const string& filename);
+void saveUserData(const UserData& user);
+void loadUserData(UserData& user, const string& filename);
+register_result registerUser(const string& username, const string& password);
+login_result login(UserData& loggedInUser);
+void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate);
+void viewHistory(const UserData& user);
+string md5(std::string dat);
 
-    UserData userdata;
-	bool fileExists(const string& filename);
-	void saveUserData(const UserData& user);
-	void loadUserData(UserData& user, const string& filename);
-    void registerUser(const string& username, const string& password);
-    login_result login(UserData& loggedInUser);
-	void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate);
-    void viewHistory(const UserData& user);
-    string md5(std::string dat);
-};
 

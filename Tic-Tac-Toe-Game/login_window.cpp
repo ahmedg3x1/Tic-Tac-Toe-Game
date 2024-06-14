@@ -31,19 +31,19 @@ login_window::~login_window()
 
 
 
-void login_window::on_register_button_clicked()
-{
-
-    // Create a new instance of your registration form
-   static register_window *registrationForm = new register_window(this); // Pass 'this' as parent
-
-    // Optionally, set initial values for the registration form (if needed)
-
-    // Show the registration form modally and hide the login form
-    hide();
-    registrationForm->show();
-
-}
+//void login_window::on_register_button_clicked()
+//{
+//
+//    // Create a new instance of your registration form
+//   static register_window *registrationForm = new register_window(this); // Pass 'this' as parent
+//
+//    // Optionally, set initial values for the registration form (if needed)
+//
+//    // Show the registration form modally and hide the login form
+//    hide();
+//    registrationForm->show();
+//
+//}
 
 
 //void login_window::on_login_button_clicked()
@@ -72,7 +72,7 @@ void login_window::on_register_button_clicked()
 //        ui->warning_label->setText("Database error during login!");
 //        ui->warning_label->show();
 //        break;
-//    case correct:
+//    case login_correct:
 //            static entry_menu *my_entry_menu = new entry_menu(this);
 //            hide();
 //            my_entry_menu->show();
@@ -96,11 +96,11 @@ void login_window::on_register_button_clicked()
 //}
 
 
-void login_window::on_cancel_button_clicked()
-{
-    close();
-    myparent->show();
-}
+//void login_window::on_cancel_button_clicked()
+//{
+//    close();
+//    myparent->show();
+//}
 
 
 void login_window::on_swap_tics_clicked()
