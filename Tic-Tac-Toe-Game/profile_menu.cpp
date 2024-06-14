@@ -3,14 +3,13 @@
 #include "Database.h"
 #include <QString>
 #include <string>
-extern Database my_database;
 
 profile_menu::profile_menu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::profile_menu)
 {
     ui->setupUi(this);
-    ui->user_textbox->text() =  QString::fromStdString(my_database.userdata.username);
+    //ui->user_textbox->text() =  QString::fromStdString(my_database.userdata.username);
     //ui->wins_label->text() =  QString::fromStdString(getwins());
     //ui->draw_label->text() =  QString::fromStdString(getdraws());
     //ui->lose_label->text() =  QString::fromStdString(getloses());

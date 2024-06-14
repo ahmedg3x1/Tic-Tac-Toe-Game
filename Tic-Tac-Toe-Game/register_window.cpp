@@ -4,8 +4,6 @@
 #include "Database.h"
 
 
-extern Database my_database;
-
 
 
 register_window::register_window(QWidget *parent) :
@@ -28,7 +26,7 @@ extern bool reg(QString name,QString password);
 
 void register_window::on_register_button_clicked()
 {
-    my_database.registerUser(ui->username->text().toStdString(),ui->password->text().toStdString());
+    //registerUser(ui->username->text().toStdString(),ui->password->text().toStdString());
 }
 
 extern

@@ -4,7 +4,7 @@
 #include "Database.h"
 
 
-extern Database my_database;
+
 
 entry_menu::entry_menu(QWidget *parent) :
     QMainWindow(parent),
