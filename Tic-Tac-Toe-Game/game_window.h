@@ -28,8 +28,8 @@ class game_window : public QMainWindow
 
 public:
     game_window(QWidget *parent = nullptr, bool PVAI = false,
-                QString Player_One_Name = "Host", int Player_One_Tic = player_X,
-                QString Player_Two_Name = "Guest", int Player_Two_Tic = player_O);
+                                           int Player_One_Tic = player_X,
+                                           int Player_Two_Tic = player_O);
     ~game_window();
 
 private slots:
@@ -61,12 +61,13 @@ private:
 
     QPushButton* Slot[3][3];
 
-    int player_1_tic, player_2_tic;
-    QString player_1_name, player_2_name;
     bool aiEnable;
+
+    bool PlayerOneisStarting;
 
     bool isPlayerOneTurn; // Variable to track current player's turn
 
+    int PlayerOneBoardCode, PlayerTwoBoardCode;
     int winner = 0;
 
     int board[3][3] = {};

@@ -6,11 +6,13 @@
 
 extern Database my_database;
 
+
+
 register_window::register_window(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::register_window)
 {
-    myparent= parent;
+    myparent = parent;
     ui->setupUi(this);
 }
 
@@ -32,7 +34,7 @@ void register_window::on_register_button_clicked()
 extern
 void register_window::on_cancel_button_clicked()
 {
+    close();                // Close the registration form
     myparent->show();
-    close(); // Close the registration form
 }
 

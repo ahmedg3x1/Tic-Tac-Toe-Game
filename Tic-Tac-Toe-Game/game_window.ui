@@ -424,7 +424,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>14</pointsize>
      </font>
     </property>
     <property name="text">
@@ -454,14 +454,14 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>14</pointsize>
      </font>
     </property>
     <property name="text">
      <string>Home</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Result">
+   <widget class="QLabel" name="Label">
     <property name="geometry">
      <rect>
       <x>18</x>
@@ -484,7 +484,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>15</pointsize>
      </font>
     </property>
     <property name="text">
