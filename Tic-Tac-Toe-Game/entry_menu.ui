@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>profile</string>
+     <string>Profile</string>
     </property>
    </widget>
    <widget class="QPushButton" name="history_button">
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>history</string>
+     <string>History</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pvp_button">

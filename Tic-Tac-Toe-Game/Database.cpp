@@ -48,11 +48,8 @@ void Database::loadUserData(UserData& user, const string& filename) {
     file.close();
 }
 
-void Database::registerUser() {
+void Database::registerUser(const string& username, const string& password) {
     UserData newUser;
-    string username, password;
-    cout << "Enter username: ";
-    cin >> username;
 
     // Check if the username already exists
     if (fileExists(username + "_data.txt")) {
@@ -60,8 +57,6 @@ void Database::registerUser() {
         return; // Exit the function if username already exists
     }
 
-    cout << "Enter password: ";
-    cin >> password;
     string passwordHash = md5(password); // Hash password
     newUser.username = username;
     newUser.passwordHash = passwordHash;
@@ -70,27 +65,26 @@ void Database::registerUser() {
     cout << "User registered successfully!" << endl;
 }
 
-bool Database::login(UserData& loggedInUser) {
-    string username, password;
-    cout << "Enter username: ";
-    cin >> username;
-    cout << "Enter password: ";
-    cin >> password;
+login_result Database::login(UserData& loggedInUser) {
+    string username = loggedInUser.username, password = loggedInUser.passwordHash;
     string passwordHash = md5(password); // Hash password
     string filename = username + "_data.txt";
     if (!fileExists(filename)) {
         cout << "User does not exist or invalid username/password." << endl;
-        return false;
+        return user_wrong;
     }
-    loggedInUser.username = username;
-    loggedInUser.passwordHash = passwordHash;
+
     loadUserData(loggedInUser, filename); // Load user data
     if (loggedInUser.passwordHash == passwordHash) {
         cout << "Login successful!" << endl;
-        return true;
+        return correct;
+        userdata.username = username;
+    }else
+    {
+        return password_wrong;
     }
     cout << "Invalid username or password." << endl;
-    return false;
+    return database_error;
 }
 void Database::playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate) {
     // Implement tic-tac-toe game logic here
@@ -109,8 +103,8 @@ void Database::playGame(UserData& user, const int moves[3][3], int won, string t
     user.games.push_back(game);
     saveUserData(user);
 }
-extern const int player_X;
-extern const int player_O;
+int player_X;
+int player_O;
 // Function to view game history for a specific user
 void showLog(int firstPlayer, int timelog[3][3]) {
 

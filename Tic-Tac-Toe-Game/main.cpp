@@ -3,7 +3,9 @@
 #include <QApplication>
 #include "entry_menu.h"
 #include "profile_menu.h"
+#include "Database.h"
 
+Database my_database;
 
 int main(int argc, char *argv[])
 {

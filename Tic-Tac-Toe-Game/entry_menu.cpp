@@ -1,6 +1,10 @@
 #include "entry_menu.h"
 #include "ui_entry_menu.h"
 #include "profile_menu.h"
+#include "Database.h"
+
+
+extern Database my_database;
 
 entry_menu::entry_menu(QWidget *parent) :
     QMainWindow(parent),

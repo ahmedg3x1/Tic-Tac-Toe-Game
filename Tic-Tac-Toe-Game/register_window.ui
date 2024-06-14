@@ -20,7 +20,7 @@
    <string>register</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="user">
+   <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -53,20 +53,20 @@
      </rect>
     </property>
     <property name="text">
-     <string>user</string>
+     <string>User</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>34</x>
       <y>60</y>
-      <width>55</width>
-      <height>16</height>
+      <width>61</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>password</string>
+     <string>Password</string>
     </property>
    </widget>
    <widget class="QPushButton" name="register_button">
@@ -79,7 +79,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>register</string>
+     <string>Register</string>
     </property>
    </widget>
    <widget class="QPushButton" name="cancel_button">
@@ -92,7 +92,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>cancel</string>
+     <string>Back</string>
     </property>
    </widget>
   </widget>
