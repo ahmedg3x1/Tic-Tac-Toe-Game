@@ -16,6 +16,7 @@ struct GameRecord {
     string time;
     int firstPlayer;
     int gamestate;
+    int accountHolder;
 };
 
 struct UserData {
@@ -31,6 +32,9 @@ register_result registerUser(const string& username, const string& password);
 login_result login(UserData& loggedInUser);
 void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate);
 void viewHistory(const UserData& user);
+int wins(const string& username);
+int loses(const string& username);
+int ties(const string& username);
 string md5(std::string dat);
 
 

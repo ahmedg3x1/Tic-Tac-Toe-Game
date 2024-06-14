@@ -24,6 +24,8 @@ private slots:
 
     void on_pvai_button_clicked();
 
+    void on_entry_menu_destroyed();
+
 private:
     Ui::entry_menu *ui;
     game_window *my_game_window;

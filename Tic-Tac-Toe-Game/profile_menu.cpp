@@ -12,9 +12,9 @@ profile_menu::profile_menu(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->user_textbox->setText(player_1_name);
-    //ui->wins_label->setText(QString(getwins()));
-    //ui->draw_label->setText(QString(getdraws()));
-    //ui->lose_label->setText(QString(getloses()));
+    ui->wins_label->setText(QString::number(wins(player_1_name.toStdString())));
+    ui->draw_label->setText(QString::number(loses(player_1_name.toStdString())));
+    ui->lose_label->setText(QString::number(ties(player_1_name.toStdString())));
 }
 
 profile_menu::~profile_menu()

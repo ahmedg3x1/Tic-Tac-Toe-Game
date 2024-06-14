@@ -7,7 +7,6 @@
 
 
 entry_menu::entry_menu(QWidget *parent) :
-    QMainWindow(parent),
     ui(new Ui::entry_menu)
 {
     ui->setupUi(this);
@@ -20,7 +19,7 @@ entry_menu::~entry_menu()
 
 void entry_menu::on_profile_button_clicked()
 {
-    static profile_menu *my_profile_menu = new profile_menu();
+    static profile_menu *my_profile_menu = new profile_menu(this);
     my_profile_menu->show();
 }
 
@@ -45,5 +44,11 @@ void entry_menu::on_pvai_button_clicked()
     my_game_window = new game_window(this, true);
     hide();
     my_game_window->show();
+}
+
+
+void entry_menu::on_entry_menu_destroyed()
+{
+    close();
 }
 

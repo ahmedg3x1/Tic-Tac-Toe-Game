@@ -42,10 +42,10 @@ void login_window::on_register_button_clicked()
     // Optionally, set initial values for the registration form (if needed)
 
     // Show the registration form modally and hide the login form
-   ui->username->clear();
-   ui->password_line_edit->clear();
-   ui->warning_label->setText("");
-    hide();
+    ui->username->clear();
+    ui->password_line_edit->clear();
+    ui->warning_label->setText("");
+    close();
     registrationForm->show();
 
 }
@@ -81,7 +81,7 @@ void login_window::on_login_button_clicked()
             player_1_name = ui->username->text();
             cout << "now player 1 name is:" + player_1_name.toStdString() << endl;
             static entry_menu *my_entry_menu = new entry_menu(this);
-            hide();
+            close();
             my_entry_menu->show();
         }else
         {
@@ -106,7 +106,8 @@ void login_window::on_login_button_clicked()
 void login_window::on_cancel_button_clicked()
 {
     close();
-    myparent->show();
+    if(myparent)
+        myparent->show();
 }
 
 

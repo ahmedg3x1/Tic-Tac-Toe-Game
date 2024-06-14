@@ -193,6 +193,62 @@ void viewHistory(const UserData& user) {
     }
 }
 
+
+int wins(const string& username) {
+    int c = 0;
+    UserData user;
+
+    string filename = username + "_data.txt";
+
+    if (!fileExists(filename)) {
+        cout << "User does not exist or invalid username/password." << endl;
+        return 0;
+    }
+
+    loadUserData(user, filename); // Load user data
+
+    for (const auto& game : user.games) {
+        if(game.won == game.accountHolder) c++;
+    }
+    return c;
+}
+int loses(const string& username) {
+    int c = 0;
+    UserData user;
+
+    string filename = username + "_data.txt";
+    if (!fileExists(filename)) {
+        cout << "User does not exist or invalid username/password." << endl;
+        return 0;
+    }
+
+    loadUserData(user, filename); // Load user data
+    for (const auto& game : user.games) {
+        if (game.won != game.accountHolder && game.won != 0) c++;
+    }
+    return c;
+}
+int ties(const string& username) {
+    int c = 0;
+    UserData user;
+
+    string filename = username + "_data.txt";
+    if (!fileExists(filename)) {
+        cout << "User does not exist or invalid username/password." << endl;
+        return 0;
+    }
+
+    loadUserData(user, filename); // Load user data
+    for (const auto& game : user.games) {
+        if (game.won == 0) c++;
+    }
+    return c;
+}
+
+
+
+
+
 //=======password hashing algorithm from :: https://github.com/ulwanski/md5 =====================//
 #ifndef HAVE_OPENSSL
 

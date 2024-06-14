@@ -7,7 +7,6 @@
 
 
 register_window::register_window(QWidget *parent) :
-    QMainWindow(parent),
     ui(new Ui::register_window)
 {
     myparent = parent;
