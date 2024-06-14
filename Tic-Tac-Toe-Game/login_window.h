@@ -2,6 +2,7 @@
 #define LOGIN_WINDOW_H
 
 #include <QMainWindow>
+#include "game_window.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -14,7 +15,7 @@ class login_window : public QMainWindow
 
 
 public:
-    login_window(QWidget *parent = nullptr);
+    login_window(QWidget *parent = nullptr, bool First_Player_Login = true);
     ~login_window();
 
 private slots:
@@ -22,9 +23,20 @@ private slots:
 
     void on_login_button_clicked();
 
+    void on_cancel_button_clicked();
+
+    void on_start_clicked();
+
+    void on_back_clicked();
+
+    void on_swap_tics_clicked();
+
 private:
     Ui::login_window *ui;
+    QWidget* myparent;
+    game_window *my_game_window;
 
+    bool first_player_login;
 
 };
 #endif // LOGIN_WINDOW_H

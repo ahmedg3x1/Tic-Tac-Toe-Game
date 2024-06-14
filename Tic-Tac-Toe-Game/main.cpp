@@ -1,9 +1,5 @@
 #include "login_window.h"
-#include "register_window.h"
 #include <QApplication>
-#include "entry_menu.h"
-#include "profile_menu.h"
-
 
 int main(int argc, char *argv[])
 {

@@ -3,12 +3,20 @@
 #include "register_window.h"
 #include "entry_menu.h"
 
-login_window::login_window(QWidget *parent)
+QString player_1_name = "Host", player_2_name = "Guest";
+QString player_1_tic  = "X",    player_2_tic  = "O";
+
+login_window::login_window(QWidget *parent, bool First_Player_Login)
     : QMainWindow(parent)
     , ui(new Ui::login_window)
 {
 
     ui->setupUi(this);
+    myparent = parent;
+
+    ui->stackedWidget->setCurrentWidget(ui->login_page);
+
+    first_player_login = First_Player_Login;
 
 }
 
@@ -34,8 +42,6 @@ void login_window::on_register_button_clicked()
     hide();
     registrationForm->show();
 
-
-
 }
 
 
@@ -46,10 +52,22 @@ void login_window::on_login_button_clicked()
     //login(ui->username_combobox->currentText(),ui->password_line_edit->text())
     if(1)
     {
-        //go to next window
-        static entry_menu *my_entry_menu = new entry_menu(this);
-        hide();
-        my_entry_menu->show();
+        if(first_player_login)
+        {
+            player_1_name = ui->username_combobox->currentText();
+            //go to next window
+            static entry_menu *my_entry_menu = new entry_menu(this);
+            hide();
+            my_entry_menu->show();
+        }
+        else
+        {
+            player_2_name = ui->username_combobox->currentText();
+            // tic choosing page initilization
+
+            /* show tic choosing page */
+            ui->stackedWidget->setCurrentWidget(ui->game_settings_page);
+        }
     }
     else
     {
@@ -60,4 +78,33 @@ void login_window::on_login_button_clicked()
 }
 
 
+void login_window::on_cancel_button_clicked()
+{
+    close();
+    myparent->show();
+}
 
+
+void login_window::on_swap_tics_clicked()
+{
+    QString temp = ui->first_player_tic->text();
+    ui->first_player_tic->setText(ui->second_player_tic->text());
+    ui->second_player_tic->setText(temp);
+}
+
+
+void login_window::on_start_clicked()
+{
+    player_1_tic = ui->first_player_tic->text();
+    player_2_tic = ui->second_player_tic->text();
+
+    my_game_window = new game_window(myparent);
+    hide();
+    my_game_window->show();
+}
+
+
+void login_window::on_back_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->login_page);
+}

@@ -30,9 +30,9 @@ void entry_menu::on_pvp_button_clicked()
 
 
     */
-    my_game_window = new game_window(this);
+    my_login_window = new login_window(this, false);
     hide();
-    my_game_window->show();
+    my_login_window->show();
 }
 
 

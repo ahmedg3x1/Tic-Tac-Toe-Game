@@ -1,9 +1,12 @@
 #include "game_window.h"
 #include "ui_game_window.h"
 
+extern QString player_1_name, player_2_name;
+extern QString player_1_tic,  player_2_tic;
+
 game_window::game_window(QWidget *parent, bool PVAI,
-                         QString Player_One_Name, int Player_One_Tic,
-                         QString Player_Two_Name, int Player_Two_Tic)
+                                          int Player_One_Tic,
+                                          int Player_Two_Tic)
     : QMainWindow(parent)
     , ui(new Ui::game_window)
     , aiEnable(PVAI)
@@ -12,11 +15,13 @@ game_window::game_window(QWidget *parent, bool PVAI,
     myparent = parent;
 
     /* to be changed and selected from the entry window */
-    player_1_name = Player_One_Name;
-    player_1_tic = Player_One_Tic;
-    player_2_name = Player_Two_Name;
-    player_2_tic = Player_Two_Tic;
+    PlayerOneBoardCode = Player_One_Tic;
+    PlayerTwoBoardCode = Player_Two_Tic;
+
+    PlayerOneisStarting = true;
     isPlayerOneTurn = true;       // Initialize the player turn to 'X'
+    ui->Label->setText(player_1_name + QString(" Starts !"));
+
 
     Slot[0][0] = ui->Slot_1;
     Slot[0][1] = ui->Slot_2;
@@ -44,9 +49,9 @@ void game_window::on_Slot_1_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_1->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_1->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_1->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(0, 0, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(0, 0, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -65,9 +70,9 @@ void game_window::on_Slot_2_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_2->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_2->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_2->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(0, 1, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(0, 1, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -86,9 +91,9 @@ void game_window::on_Slot_3_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_3->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_3->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_3->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(0, 2, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(0, 2, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -107,9 +112,9 @@ void game_window::on_Slot_4_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_4->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_4->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_4->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(1, 0, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(1, 0, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -128,9 +133,9 @@ void game_window::on_Slot_5_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_5->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_5->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_5->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(1, 1, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(1, 1, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -149,9 +154,9 @@ void game_window::on_Slot_6_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_6->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_6->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_6->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(1, 2, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(1, 2, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -170,9 +175,9 @@ void game_window::on_Slot_7_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_7->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_7->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_7->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(2, 0, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(2, 0, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -191,9 +196,9 @@ void game_window::on_Slot_8_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_8->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_8->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_8->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(2, 1, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(2, 1, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -212,9 +217,9 @@ void game_window::on_Slot_9_clicked()
     // Check if the button is already clicked and contains 'X' or 'O'
     if (ui->Slot_9->text().isEmpty()) {
         // Set 'X' or 'O' based on current player's turn
-        ui->Slot_9->setText(isPlayerOneTurn ? "X" : "O");
+        ui->Slot_9->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
 
-        playerMove(2, 2, isPlayerOneTurn ? player_1_tic : player_2_tic);
+        playerMove(2, 2, isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode);
 
         if(aiEnable && checkGameState() == Continue_State){
             AiMove();
@@ -242,9 +247,11 @@ void game_window::on_Play_Again_clicked()
             Slot[i][j]->setEnabled(true);
             Slot[i][j]->setText("");
         }
-    ui->Result->setText("");
 
-    isPlayerOneTurn = true;       // Initialize the player turn to 'X'
+    PlayerOneisStarting = !PlayerOneisStarting;       // Switch the starting player
+    isPlayerOneTurn = PlayerOneisStarting;
+
+    ui->Label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
 
     winner = 0;
 
@@ -269,8 +276,8 @@ bool game_window::playerMove(int row, int column, int player)
 int game_window::minimax(bool isMaximizingPlayer = false, int alpha = -10, int beta = 10)
 {
     if (checkGameState() != Continue_State) {
-        if (winner == player_2_tic) return winScore;
-        else if (winner == player_1_tic) return loseScore;
+        if (winner == PlayerTwoBoardCode) return winScore;
+        else if (winner == PlayerOneBoardCode) return loseScore;
         else return tieScore;
     }
 
@@ -279,7 +286,7 @@ int game_window::minimax(bool isMaximizingPlayer = false, int alpha = -10, int b
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == EMPTY) {
-                    board[i][j] = player_2_tic;
+                    board[i][j] = PlayerTwoBoardCode;
                     int score = minimax(false, alpha, beta);
                     bestScore = std::max(bestScore, score);
                     alpha = std::max(alpha, score);
@@ -295,7 +302,7 @@ int game_window::minimax(bool isMaximizingPlayer = false, int alpha = -10, int b
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == EMPTY) {
-                    board[i][j] = player_1_tic;
+                    board[i][j] = PlayerOneBoardCode;
                     int score = minimax(true, alpha, beta);
                     bestScore = std::min(bestScore, score);
                     beta = std::min(beta, bestScore);
@@ -317,7 +324,7 @@ void game_window::AiMove()
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++) {
             if (board[i][j] == EMPTY) {
-                board[i][j] = player_2_tic;
+                board[i][j] = PlayerTwoBoardCode;
                 int score = minimax();
                 if (score > bestScore) {
                     bestScore = score;
@@ -328,9 +335,9 @@ void game_window::AiMove()
             }
 
         }
-    playerMove(row, coulmn, player_2_tic);
+    playerMove(row, coulmn, PlayerTwoBoardCode);
 
-    Slot[row][coulmn]->setText((player_2_tic == player_X) ? "X" : "O");
+    Slot[row][coulmn]->setText((PlayerTwoBoardCode == player_X) ? player_1_tic : player_2_tic);
 }
 
 
@@ -378,11 +385,11 @@ void game_window::controlGameFlow(int gameState)
     switch (gameState)
     {
     case Continue_State:
-
+        ui->Label->setText("");
         break;
 
     case Winner_State:
-        ui->Result->setText((winner == 1) ? "X Won !" : "O Won !");
+        ui->Label->setText(((winner == 1) ? player_1_name : player_2_name) + QString(" Won !"));
 
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
@@ -390,7 +397,7 @@ void game_window::controlGameFlow(int gameState)
         break;
 
     case Tie_State:
-        ui->Result->setText("Tie !");
+        ui->Label->setText("Tie !");
         break;
     }
 
