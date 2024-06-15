@@ -9,20 +9,27 @@
 QString player_1_name = "Host", player_2_name = "Guest";
 QString player_1_tic  = "X",    player_2_tic  = "O";
 
-login_window::login_window(QWidget *parent, bool First_Player_Login)
+login_window::login_window(QWidget *parent, bool First_Player_Login, bool PVAI)
     : QMainWindow(parent)
     , ui(new Ui::login_window)
+    , aiEnable(PVAI)
 {
     ui->setupUi(this);
     myparent = parent;
 
-    ui->first_player_name->setText(player_1_name);
-    ui->second_player_name->setText(player_2_name);
-
-    ui->stackedWidget->setCurrentWidget(ui->login_page);
-
     first_player_login = First_Player_Login;
 
+    if(PVAI){
+        ui->stackedWidget->setCurrentWidget(ui->game_settings_page);
+        player_2_name = QString("Machine");
+    }
+    else{
+        ui->stackedWidget->setCurrentWidget(ui->login_page);
+    }
+
+    ui->first_player_name->setText(player_1_name);
+    ui->second_player_name->setText(player_2_name);
+    ui->starting_player_name->setText(player_1_name + QString(" Will start !"));
 }
 
 login_window::~login_window()
@@ -53,7 +60,6 @@ void login_window::on_register_button_clicked()
 
 void login_window::on_login_button_clicked()
 {
-
     //this is the condition
 
     UserData input_user;
@@ -86,7 +92,10 @@ void login_window::on_login_button_clicked()
         }else
         {
             player_2_name = ui->username->text();
-            // tic choosing page initilization
+            //tic choosing page initilization
+            ui->first_player_name->setText(player_1_name);
+            ui->second_player_name->setText(player_2_name);
+            ui->starting_player_name->setText(player_1_name + QString(" Will start !"));
             cout << "now player 2 name is:" + player_2_name.toStdString() << endl;
             /* show tic choosing page */
             ui->stackedWidget->setCurrentWidget(ui->game_settings_page);
@@ -96,10 +105,6 @@ void login_window::on_login_button_clicked()
     default:
         break;
     }
-
-
-
-
 }
 
 
@@ -124,7 +129,7 @@ void login_window::on_start_clicked()
     player_1_tic = ui->first_player_tic->text();
     player_2_tic = ui->second_player_tic->text();
 
-    my_game_window = new game_window(myparent);
+    my_game_window = new game_window(myparent, aiEnable);
     hide();
     my_game_window->show();
 }
@@ -134,6 +139,12 @@ void login_window::on_start_clicked()
 
 void login_window::on_back_clicked()
 {
-
+    if(aiEnable){
+        close();
+        myparent->show();
+    }
+    else{
+        ui->stackedWidget->setCurrentWidget(ui->login_page);
+    }
 }
 

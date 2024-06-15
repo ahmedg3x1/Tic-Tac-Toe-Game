@@ -27,9 +27,7 @@ class game_window : public QMainWindow
     Q_OBJECT
 
 public:
-    game_window(QWidget *parent = nullptr, bool PVAI = false,
-                                           int Player_One_Tic = player_X,
-                                           int Player_Two_Tic = player_O);
+    game_window(QWidget *parent = nullptr, bool PVAI = false);
     ~game_window();
 
 private slots:

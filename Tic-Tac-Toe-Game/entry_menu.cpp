@@ -7,6 +7,7 @@
 
 
 entry_menu::entry_menu(QWidget *parent) :
+    QMainWindow(parent),
     ui(new Ui::entry_menu)
 {
     ui->setupUi(this);
@@ -33,7 +34,7 @@ void entry_menu::on_pvp_button_clicked()
 
 
     */
-    my_login_window = new login_window(this, false);
+    my_login_window = new login_window(this, false, false);
     my_login_window->setWindowModality(Qt::ApplicationModal);
     //hide();
 
@@ -43,9 +44,9 @@ void entry_menu::on_pvp_button_clicked()
 
 void entry_menu::on_pvai_button_clicked()
 {
-    my_game_window = new game_window(this, true);
+    my_login_window = new login_window(this, false, true);
     hide();
-    my_game_window->show();
+    my_login_window->show();
 }
 
 

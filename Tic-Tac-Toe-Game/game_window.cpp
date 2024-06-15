@@ -4,21 +4,19 @@
 extern QString player_1_name, player_2_name;
 extern QString player_1_tic,  player_2_tic;
 
-game_window::game_window(QWidget *parent, bool PVAI,
-                                          int Player_One_Tic,
-                                          int Player_Two_Tic)
-    : ui(new Ui::game_window)
+game_window::game_window(QWidget *parent, bool PVAI)
+    : QMainWindow(parent)
+    , ui(new Ui::game_window)
     , aiEnable(PVAI)
 {
     ui->setupUi(this);
     myparent = parent;
 
-    /* to be changed and selected from the entry window */
-    PlayerOneBoardCode = Player_One_Tic;
-    PlayerTwoBoardCode = Player_Two_Tic;
+    PlayerOneBoardCode = (player_1_tic == "X") ? player_X : player_O;
+    PlayerTwoBoardCode = (player_2_tic == "X") ? player_X : player_O;
 
-    PlayerOneisStarting = true;
-    isPlayerOneTurn = true;       // Initialize the player turn to 'X'
+    PlayerOneisStarting = true;     // Player One starts every time
+    isPlayerOneTurn = true;         // Initialize the player turn to 'X'
     ui->Label->setText(player_1_name + QString(" Starts !"));
 
 
@@ -247,8 +245,14 @@ void game_window::on_Play_Again_clicked()
             Slot[i][j]->setText("");
         }
 
-    PlayerOneisStarting = !PlayerOneisStarting;       // Switch the starting player
-    isPlayerOneTurn = PlayerOneisStarting;
+    if(aiEnable){
+        PlayerOneisStarting = true;
+        isPlayerOneTurn = true;
+    }
+    else{
+        PlayerOneisStarting = !PlayerOneisStarting;       // Switch the starting player
+        isPlayerOneTurn = PlayerOneisStarting;
+    }
 
     ui->Label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
 
@@ -336,7 +340,7 @@ void game_window::AiMove()
         }
     playerMove(row, coulmn, PlayerTwoBoardCode);
 
-    Slot[row][coulmn]->setText((PlayerTwoBoardCode == player_X) ? player_1_tic : player_2_tic);
+    Slot[row][coulmn]->setText(player_2_tic);
 }
 
 
@@ -388,7 +392,16 @@ void game_window::controlGameFlow(int gameState)
         break;
 
     case Winner_State:
-        ui->Label->setText(((winner == 1) ? player_1_name : player_2_name) + QString(" Won !"));
+        switch (winner)
+        {
+        case player_X:
+            ui->Label->setText(((player_1_tic == "X") ? player_1_name : player_2_name) + QString(" Won !"));
+            break;
+
+        case player_O:
+            ui->Label->setText(((player_1_tic == "O") ? player_1_name : player_2_name) + QString(" Won !"));
+            break;
+        }
 
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)

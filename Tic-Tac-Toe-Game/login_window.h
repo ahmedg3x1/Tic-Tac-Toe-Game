@@ -15,7 +15,7 @@ class login_window : public QMainWindow
 
 
 public:
-    login_window(QWidget *parent = nullptr, bool First_Player_Login = true);
+    login_window(QWidget *parent = nullptr, bool First_Player_Login = true, bool PVAI = false);
     ~login_window();
 
 private slots:
@@ -35,6 +35,8 @@ private:
     Ui::login_window *ui;
     QWidget* myparent;
     game_window *my_game_window;
+
+    bool aiEnable;
 
     bool first_player_login;
 
