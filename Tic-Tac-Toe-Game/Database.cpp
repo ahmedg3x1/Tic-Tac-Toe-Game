@@ -98,7 +98,7 @@ login_result login(UserData& loggedInUser) {
 
     loadUserData(loggedInUser, filename); // Load user data
     if (loggedInUser.passwordHash == passwordHash) {
-        cout << "Login successful!" << endl;
+        cout << "user match!" << endl;
         return login_correct;
         //in this case the correct username will be the one that was sent
     }else
