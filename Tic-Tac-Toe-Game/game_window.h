@@ -27,7 +27,7 @@ class game_window : public QMainWindow
     Q_OBJECT
 
 public:
-    game_window(QWidget *parent = nullptr, bool PVAI = false);
+    game_window(QWidget *parent = nullptr, bool PVAI = false, bool game = true);
     ~game_window();
 
 private slots:
@@ -82,6 +82,8 @@ private:
     int checkGameState();
 
     void controlGameFlow(int gameState);
+
+    void EnableSlots(bool state);
 };
 
 #endif // GAME_WINDOW_H

@@ -4,17 +4,31 @@
 #include <QString>
 #include <string>
 
+extern UserData loggedInHost, loggedInGuest;
+
 extern QString player_1_name, player_2_name;
 
-profile_menu::profile_menu(QWidget *parent) :
+profile_menu::profile_menu(QWidget *parent, bool history) :
     QMainWindow(parent),
     ui(new Ui::profile_menu)
 {
     ui->setupUi(this);
-    ui->user_textbox->setText(player_1_name);
-    ui->wins_label->setText(QString::number(wins(player_1_name.toStdString())));
-    ui->draw_label->setText(QString::number(loses(player_1_name.toStdString())));
-    ui->lose_label->setText(QString::number(ties(player_1_name.toStdString())));
+
+    if(history){
+        string filename = loggedInHost.username + "_data.txt";
+        loadUserData(loggedInHost, filename);
+        //create the hitory table
+
+        ui->stackedWidget->setCurrentWidget(ui->history_page);
+    }
+    else{
+        ui->user_textbox->setText(player_1_name);
+        ui->wins_label->setText(QString::number(wins(player_1_name.toStdString())));
+        ui->lose_label->setText(QString::number(loses(player_1_name.toStdString())));
+        ui->draw_label->setText(QString::number(ties(player_1_name.toStdString())));
+
+        ui->stackedWidget->setCurrentWidget(ui->profile_page);
+    }
 }
 
 profile_menu::~profile_menu()

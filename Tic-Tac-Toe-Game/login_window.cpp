@@ -4,7 +4,7 @@
 #include "entry_menu.h"
 #include "Database.h"
 
-
+UserData loggedInHost, loggedInGuest;
 
 QString player_1_name = "Host", player_2_name = "Guest";
 QString player_1_tic  = "X",    player_2_tic  = "O";
@@ -50,7 +50,7 @@ void login_window::on_register_button_clicked()
 
     // Show the registration form modally and hide the login form
     ui->username->clear();
-    ui->password_line_edit->clear();
+    ui->password->clear();
     ui->warning_label->setText("");
     close();
     registrationForm->show();
@@ -61,10 +61,9 @@ void login_window::on_register_button_clicked()
 void login_window::on_login_button_clicked()
 {
     //this is the condition
-
     UserData input_user;
     input_user.username = (ui->username->text().toStdString());
-    input_user.passwordHash = (ui->password_line_edit->text().toStdString());
+    input_user.passwordHash = (ui->password->text().toStdString());
     login_result login_test = login(input_user);
 
     switch (login_test) {
@@ -85,18 +84,25 @@ void login_window::on_login_button_clicked()
         if(first_player_login)
         {
             player_1_name = ui->username->text();
-            cout << "now player 1 name is:" + player_1_name.toStdString() << endl;
+            loggedInHost.username = ui->username->text().toStdString();
+            loggedInHost.passwordHash = md5(ui->password->text().toStdString());
+            cout << "now player 1 name is: " + player_1_name.toStdString() << endl;
+
             static entry_menu *my_entry_menu = new entry_menu(this);
             close();
             my_entry_menu->show();
         }else
         {
             player_2_name = ui->username->text();
+            loggedInGuest.username = player_2_name.toStdString();
+            loggedInGuest.passwordHash = md5(ui->password->text().toStdString());
+            cout << "now player 2 name is: " + player_2_name.toStdString() << endl;
+
             //tic choosing page initilization
             ui->first_player_name->setText(player_1_name);
             ui->second_player_name->setText(player_2_name);
             ui->starting_player_name->setText(player_1_name + QString(" Will start !"));
-            cout << "now player 2 name is:" + player_2_name.toStdString() << endl;
+
             /* show tic choosing page */
             ui->stackedWidget->setCurrentWidget(ui->game_settings_page);
         }

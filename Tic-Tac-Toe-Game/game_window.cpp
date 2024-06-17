@@ -1,10 +1,13 @@
 #include "game_window.h"
 #include "ui_game_window.h"
+#include "Database.h"
+
+extern UserData loggedInHost, loggedInGuest;
 
 extern QString player_1_name, player_2_name;
 extern QString player_1_tic,  player_2_tic;
 
-game_window::game_window(QWidget *parent, bool PVAI)
+game_window::game_window(QWidget *parent, bool PVAI, bool game)
     : QMainWindow(parent)
     , ui(new Ui::game_window)
     , aiEnable(PVAI)
@@ -15,9 +18,9 @@ game_window::game_window(QWidget *parent, bool PVAI)
     PlayerOneBoardCode = (player_1_tic == "X") ? player_X : player_O;
     PlayerTwoBoardCode = (player_2_tic == "X") ? player_X : player_O;
 
-    PlayerOneisStarting = true;     // Player One starts every time
-    isPlayerOneTurn = true;         // Initialize the player turn to 'X'
-    ui->Label->setText(player_1_name + QString(" Starts !"));
+    PlayerOneisStarting = true;     // Player One starts every first time
+    isPlayerOneTurn = true;         // Initialize the player turn to player one
+    ui->game_label->setText(player_1_name + QString(" Starts !"));
 
 
     Slot[0][0] = ui->Slot_1;
@@ -31,8 +34,10 @@ game_window::game_window(QWidget *parent, bool PVAI)
     Slot[2][2] = ui->Slot_9;
 
     for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++) {
             board[i][j] = 0;
+            timelog[i][j] = 0;
+        }
 }
 
 game_window::~game_window()
@@ -247,20 +252,24 @@ void game_window::on_Play_Again_clicked()
 
     if(aiEnable){
         PlayerOneisStarting = true;
-        isPlayerOneTurn = true;
+        isPlayerOneTurn = true;        
     }
     else{
         PlayerOneisStarting = !PlayerOneisStarting;       // Switch the starting player
         isPlayerOneTurn = PlayerOneisStarting;
     }
 
-    ui->Label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
+    ui->game_label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
 
     winner = 0;
 
+    log_counter = 1;
+
     for (int i = 0; i < 3; i++)
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++){
             board[i][j] = 0;
+            timelog[i][j] = 0;
+        }
 }
 
 
@@ -388,31 +397,43 @@ void game_window::controlGameFlow(int gameState)
     switch (gameState)
     {
     case Continue_State:
-        ui->Label->setText("");
+        ui->game_label->setText("");
         break;
 
     case Winner_State:
+        EnableSlots(false);
+
         switch (winner)
         {
         case player_X:
-            ui->Label->setText(((player_1_tic == "X") ? player_1_name : player_2_name) + QString(" Won !"));
+            ui->game_label->setText(((player_1_tic == "X") ? player_1_name : player_2_name) + QString(" Won !"));
             break;
 
         case player_O:
-            ui->Label->setText(((player_1_tic == "O") ? player_1_name : player_2_name) + QString(" Won !"));
+            ui->game_label->setText(((player_1_tic == "O") ? player_1_name : player_2_name) + QString(" Won !"));
             break;
         }
-
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                Slot[i][j]->setEnabled(false);
         break;
 
     case Tie_State:
-        ui->Label->setText("Tie !");
+        ui->game_label->setText("Tie !");
         break;
     }
 
+    if(gameState != Continue_State){
+        if(aiEnable)
+            SaveLastGame(loggedInHost, timelog, winner, PlayerOneisStarting, gameState, PlayerOneBoardCode);
+        else
+            SaveLastGame(loggedInHost, timelog, winner, PlayerOneisStarting, gameState, PlayerOneBoardCode,
+                         true, loggedInGuest.username, &loggedInGuest);
+    }
     return;
+}
+
+void game_window::EnableSlots(bool state)
+{
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            Slot[i][j]->setEnabled(state);
 }
 

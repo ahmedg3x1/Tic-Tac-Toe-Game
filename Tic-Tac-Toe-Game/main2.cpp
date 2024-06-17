@@ -82,7 +82,7 @@ int main() {
                 int Minute = newtime->tm_min;
                 int Seconed = newtime->tm_sec;
                 string time = to_string(year) + "/" + to_string(Month) + "/" + to_string(Day) + "-" + to_string(Hour) + ":" + to_string(Minute) + ":" + to_string(Seconed);
-                db.playGame(loggedInUser, game.timelog, game.winner, time, game.firstPlayer, game.gameState);    // Pass loggedInUser to playGame function
+                db.SaveLastGame(loggedInUser, game.timelog, game.winner, time, game.firstPlayer, game.gameState);    // Pass loggedInUser to playGame function
 
                 
             }

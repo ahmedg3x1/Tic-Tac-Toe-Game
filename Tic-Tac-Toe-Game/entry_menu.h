@@ -2,8 +2,8 @@
 #define ENTRY_MENU_H
 
 #include <QMainWindow>
-#include "game_window.h"
 #include "login_window.h"
+#include "profile_menu.h"
 
 namespace Ui {
 class entry_menu;
@@ -26,10 +26,12 @@ private slots:
 
     void on_entry_menu_destroyed();
 
+    void on_history_button_clicked();
+
 private:
     Ui::entry_menu *ui;
-    game_window *my_game_window;
     login_window *my_login_window;
+    profile_menu *my_profile_menu;
 };
 
 #endif // ENTRY_MENU_H

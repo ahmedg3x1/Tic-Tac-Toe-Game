@@ -12,7 +12,7 @@ class profile_menu : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit profile_menu(QWidget *parent = nullptr);
+    explicit profile_menu(QWidget *parent = nullptr, bool history = false);
     ~profile_menu();
 
 private slots:

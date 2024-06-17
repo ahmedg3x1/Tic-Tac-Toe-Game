@@ -1,5 +1,6 @@
 #include "Database.h"
 #include <string>
+#include <time.h>
 
 // Function to check if a file exists
 bool fileExists(const string& filename) {
@@ -15,7 +16,7 @@ void saveUserData(const UserData& user) {
     }
     file << user.username << " " << user.passwordHash << endl; // Save username and password hash
     for (const auto& game : user.games) {
-        file << game.accountHolder << " " << game.time << " " << game.won << " " << game.firstPlayer << " " << game.gamestate << " ";
+        file << game.time << " " << game.opponentName << " " << game.accountHolderStarted << " " << game.accountHolder << " " << game.won << " " << game.gamestate << " ";
         for (int i = 0; i < 9; ++i) {
             file << game.moves[i] << " "; // Save moves array
         }
@@ -39,7 +40,7 @@ void loadUserData(UserData& user, const string& filename) {
     while (getline(file, line)) {
         stringstream ss(line);
         GameRecord game;
-        ss >> game.accountHolder >> game.time >> game.won >> game.firstPlayer >> game.gamestate;
+        ss >> game.time >> game.opponentName >> game.accountHolderStarted >> game.accountHolder >> game.won >> game.gamestate;
         for (int i = 0; i < 9; ++i) {
             ss >> game.moves[i]; // Load moves array
         }
@@ -108,69 +109,46 @@ login_result login(UserData& loggedInUser) {
     cout << "Invalid username or password." << endl;
     return database_error;
 }
-void playGame(UserData& user, const int moves[3][3], int won, string time, int firstPlayer, int gamestate, int accountHolder) {
-    // Implement tic-tac-toe game logic here
-    // After the game, save the game record to the user's data
+
+void SaveLastGame(UserData& host, const int moves[3][3], int won, bool accountHolderStarted, int gamestate, int accountHolder,
+				  bool PVP, string opponentName, UserData* guest) {
+    struct tm* newtime;
+    time_t now = time(0);
+    time_t n = now;
+    newtime = localtime(&now);
+    int year = 1900 + newtime->tm_year;
+    int Month = 1 + newtime->tm_mon;
+    int Day = newtime->tm_mday;
+    int Hour = newtime->tm_hour;
+    int Minute = newtime->tm_min;
+    int Seconed = newtime->tm_sec;
+    string time = to_string(year) + "/" + to_string(Month) + "/" + to_string(Day) + "-" + to_string(Hour) + ":" + to_string(Minute) + ":" + to_string(Seconed);
+
     GameRecord game;
-    game.won = won;
     game.time = time;
-    game.firstPlayer = firstPlayer;
-    game.gamestate = gamestate;
+    game.opponentName = opponentName;
+    game.accountHolderStarted = accountHolderStarted;
 	game.accountHolder = accountHolder;
+	game.won = won;
+	game.gamestate = gamestate;
 
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) 
             game.moves[3*i+j] = moves[i][j];
     }
 
-    user.games.push_back(game);
-    saveUserData(user);
+    host.games.push_back(game);
+    saveUserData(host);
+
+    if(PVP){
+    	game.opponentName = host.username;
+    	game.accountHolderStarted = !accountHolderStarted;
+    	game.accountHolder = 3 - accountHolder;				// 3 - Player_X = Player_O & 3 - Player_O = Player_X
+        guest->games.push_back(game);
+        saveUserData(*guest);
+    }
 }
-int player_X;
-int player_O;
-// Function to view game history for a specific user
-void showLog(int firstPlayer, int timelog[3][3]) {
 
-	int logBoard[3][3] = {};
-
-	int moveStorage[9][2];
-	for (int i = 0; i < 9; i++) {
-		moveStorage[i][0] = -1;
-		moveStorage[i][1] = -1;
-	}
-
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			if (timelog[i][j] != 0) {
-				moveStorage[timelog[i][j] - 1][0] = i;
-				moveStorage[timelog[i][j] - 1][1] = j;
-			}
-		}
-	}
-
-	int row, column;
-	int currentPlayer = firstPlayer;
-
-	std::cin.ignore();
-
-	for (int i = 0; i < 9; i++) {
-		if (moveStorage[i][0] != -1) {
-			row = moveStorage[i][0];
-			column = moveStorage[i][1];
-			logBoard[row][column] = currentPlayer;
-
-			std::cout << std::endl;
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 3; j++)
-					std::cout << logBoard[i][j] << "  ";
-				std::cout << std::endl;
-			}
-			std::cout << "press enter to cont....";
-			std::cin.ignore();
-			currentPlayer = currentPlayer != player_X ? player_X : player_O; //Switch Players
-		}
-	}
-}
 
 void viewHistory(const UserData& user) {
     cout << "User: " << user.username << endl;
@@ -181,22 +159,22 @@ void viewHistory(const UserData& user) {
         cout << "Game History : " << endl;
         int c = 1;
         for (const auto& game : user.games) {
-            cout <<  c++ << " -  Date: " << game.time << ", Won: " << game.won << ", FirsttoPlay: " << game.firstPlayer << ", GameState: " << game.gamestate << endl;
+            cout <<  c++ << " -  Date: " << game.time << ", Won: " << game.won << ", account holder started ? " << game.accountHolderStarted << ", GameState: " << game.gamestate << endl;
            }
         cout << "accountHolder  " << "wins: " << wins(user.username) << " loses: " << loses(user.username) << " ties :" << ties(user.username) << endl;
         int b = 0;
-		int firstPlayer;
+		bool accountHolderStarted;
 		int log[3][3];
         cout << "select Board : ";
         cin >> b;
-        firstPlayer = user.games[b - 1].firstPlayer;
+        accountHolderStarted = user.games[b - 1].accountHolderStarted;
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
                 log[i][j] = user.games[b - 1].moves[i*3+j];
             cout << endl;        
 
 			cout << "=============================log start================================" << endl;
-			showLog(firstPlayer, log);
+//			showLog(accountHolderStarted, log);
 			cout << "==============================log end=================================" << endl;;
 			
     }

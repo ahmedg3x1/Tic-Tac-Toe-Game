@@ -1,10 +1,8 @@
 #include "entry_menu.h"
 #include "ui_entry_menu.h"
-#include "profile_menu.h"
 #include "Database.h"
 
-
-
+extern UserData loggedInHost, loggedInGuest;
 
 entry_menu::entry_menu(QWidget *parent) :
     QMainWindow(parent),
@@ -16,12 +14,6 @@ entry_menu::entry_menu(QWidget *parent) :
 entry_menu::~entry_menu()
 {
     delete ui;
-}
-
-void entry_menu::on_profile_button_clicked()
-{
-    static profile_menu *my_profile_menu = new profile_menu(this);
-    my_profile_menu->show();
 }
 
 
@@ -53,5 +45,21 @@ void entry_menu::on_pvai_button_clicked()
 void entry_menu::on_entry_menu_destroyed()
 {
     close();
+}
+
+
+void entry_menu::on_profile_button_clicked()
+{
+    my_profile_menu = new profile_menu(this, false);
+    my_profile_menu->show();
+}
+
+
+void entry_menu::on_history_button_clicked()
+{
+//    my_profile_menu = new profile_menu(this, true);
+//    my_profile_menu->show();
+
+    viewHistory(loggedInHost);
 }
 
