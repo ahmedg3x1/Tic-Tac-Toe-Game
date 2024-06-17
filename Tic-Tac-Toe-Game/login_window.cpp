@@ -90,7 +90,7 @@ void login_window::on_login_button_clicked()
 
             static entry_menu *my_entry_menu = new entry_menu(this);
             ui->username->clear();
-            ui->password_line_edit->clear();
+            ui->password->clear();
             ui->warning_label->setText("");
             close();
             my_entry_menu->show();
@@ -110,7 +110,7 @@ void login_window::on_login_button_clicked()
 
             /* show tic choosing page */
             ui->username->clear();
-            ui->password_line_edit->clear();
+            ui->password->clear();
             ui->warning_label->setText("");
             ui->stackedWidget->setCurrentWidget(ui->game_settings_page);
             }else
