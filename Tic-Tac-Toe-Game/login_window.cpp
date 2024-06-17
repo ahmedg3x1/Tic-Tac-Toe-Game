@@ -89,10 +89,15 @@ void login_window::on_login_button_clicked()
             cout << "now player 1 name is: " + player_1_name.toStdString() << endl;
 
             static entry_menu *my_entry_menu = new entry_menu(this);
+            ui->username->clear();
+            ui->password_line_edit->clear();
+            ui->warning_label->setText("");
             close();
             my_entry_menu->show();
         }else
         {
+            if(ui->username->text() != player_1_name)
+            {
             player_2_name = ui->username->text();
             loggedInGuest.username = player_2_name.toStdString();
             loggedInGuest.passwordHash = md5(ui->password->text().toStdString());
@@ -104,7 +109,15 @@ void login_window::on_login_button_clicked()
             ui->starting_player_name->setText(player_1_name + QString(" Will start !"));
 
             /* show tic choosing page */
+            ui->username->clear();
+            ui->password_line_edit->clear();
+            ui->warning_label->setText("");
             ui->stackedWidget->setCurrentWidget(ui->game_settings_page);
+            }else
+            {
+                ui->warning_label->setText("Please select different user!");
+                ui->warning_label->show();
+            }
         }
 
         break;
