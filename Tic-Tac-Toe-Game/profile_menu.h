@@ -2,6 +2,9 @@
 #define PROFILE_MENU_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
+#include "game_window.h"
+#include "Database.h"
 
 namespace Ui {
 class profile_menu;
@@ -20,8 +23,20 @@ private slots:
 
     void on_profile_menu_destroyed(QObject *arg1);
 
+    void on_replay_clicked();
+
+    void on_back_clicked();
+
+    void on_match_list_clicked(const QModelIndex &index);
+
 private:
     Ui::profile_menu *ui;
+    QWidget* myparent;
+    game_window *my_history_window;
+
+    QStandardItemModel *model;
+
+    GameRecord selected_match;
 };
 
 #endif // PROFILE_MENU_H

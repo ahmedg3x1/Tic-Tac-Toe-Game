@@ -385,6 +385,13 @@ void game_window::AiMove()
 //change the Winner Var to ((the player pice)) but it was a tie it will change the var to ((0)).
 int game_window::checkGameState()
 {
+    bool isEmpty = true;
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            if(board[i][j] != 0)
+                isEmpty = false;
+    if(isEmpty)
+        return Start_State;
 
     //Check Rows
     for (int i = 0; i < 3; i++)
@@ -458,7 +465,7 @@ void game_window::controlGameFlow(int gameState)
 
     case Start_State:
         ui->history_label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
-        ui->Back->setEnabled(false);
+        ui->Previous->setEnabled(false);
         break;
     }
 

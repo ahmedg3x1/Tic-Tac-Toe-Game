@@ -5,7 +5,6 @@
 #include "login_window.h"
 #include "profile_menu.h"
 
-#include "game_window.h"
 
 namespace Ui {
 class entry_menu;
@@ -34,8 +33,6 @@ private:
     Ui::entry_menu *ui;
     login_window *my_login_window;
     profile_menu *my_profile_menu;
-
-    game_window *my_game_window;
 };
 
 #endif // ENTRY_MENU_H

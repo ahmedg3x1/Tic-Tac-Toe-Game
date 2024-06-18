@@ -86,6 +86,7 @@ void login_window::on_login_button_clicked()
             player_1_name = ui->username->text();
             loggedInHost.username = ui->username->text().toStdString();
             loggedInHost.passwordHash = md5(ui->password->text().toStdString());
+            loadUserData(loggedInHost, loggedInHost.username + "_data.txt");
             cout << "now player 1 name is: " + player_1_name.toStdString() << endl;
 
             static entry_menu *my_entry_menu = new entry_menu(this);
@@ -149,6 +150,7 @@ void login_window::on_start_clicked()
     player_2_tic = ui->second_player_tic->text();
 
     my_game_window = new game_window(myparent, aiEnable);
+    my_game_window->setWindowModality(Qt::ApplicationModal);
     hide();
     my_game_window->show();
 }

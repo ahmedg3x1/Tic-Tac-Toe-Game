@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>361</width>
+    <width>332</width>
     <height>239</height>
    </rect>
   </property>
@@ -22,12 +22,12 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>361</width>
+      <width>331</width>
       <height>239</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="profile_page">
      <widget class="QLabel" name="label">
@@ -144,7 +144,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>361</width>
+        <width>331</width>
         <height>192</height>
        </rect>
       </property>
@@ -152,7 +152,7 @@
      <widget class="QPushButton" name="replay">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>185</x>
         <y>200</y>
         <width>83</width>
         <height>29</height>
@@ -165,7 +165,7 @@
      <widget class="QPushButton" name="back">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>60</x>
         <y>200</y>
         <width>83</width>
         <height>29</height>

@@ -16,7 +16,7 @@ void saveUserData(const UserData& user) {
     }
     file << user.username << " " << user.passwordHash << endl; // Save username and password hash
     for (const auto& game : user.games) {
-        file << game.time << " " << game.opponentName << " " << game.accountHolderStarted << " " << game.accountHolder << " " << game.won << " " << game.gamestate << " ";
+        file << game.date << " " << game.time << " " << game.opponentName << " " << game.accountHolderStarted << " " << game.accountHolder << " " << game.won << " " << game.gamestate << " ";
         for (int i = 0; i < 9; ++i) {
             file << game.moves[i] << " "; // Save moves array
         }
@@ -40,7 +40,7 @@ void loadUserData(UserData& user, const string& filename) {
     while (getline(file, line)) {
         stringstream ss(line);
         GameRecord game;
-        ss >> game.time >> game.opponentName >> game.accountHolderStarted >> game.accountHolder >> game.won >> game.gamestate;
+        ss >> game.date >> game.time >> game.opponentName >> game.accountHolderStarted >> game.accountHolder >> game.won >> game.gamestate;
         for (int i = 0; i < 9; ++i) {
             ss >> game.moves[i]; // Load moves array
         }
@@ -114,7 +114,6 @@ void SaveLastGame(UserData& host, const int moves[3][3], int won, bool accountHo
 				  bool PVP, string opponentName, UserData* guest) {
     struct tm* newtime;
     time_t now = time(0);
-    time_t n = now;
     newtime = localtime(&now);
     int year = 1900 + newtime->tm_year;
     int Month = 1 + newtime->tm_mon;
@@ -122,9 +121,11 @@ void SaveLastGame(UserData& host, const int moves[3][3], int won, bool accountHo
     int Hour = newtime->tm_hour;
     int Minute = newtime->tm_min;
     int Seconed = newtime->tm_sec;
-    string time = to_string(year) + "/" + to_string(Month) + "/" + to_string(Day) + "-" + to_string(Hour) + ":" + to_string(Minute) + ":" + to_string(Seconed);
+    string date = to_string(year) + "/" + to_string(Month) + "/" + to_string(Day);
+    string time = to_string(Hour) + ":" + to_string(Minute) + ":" + to_string(Seconed);
 
     GameRecord game;
+    game.date = date;
     game.time = time;
     game.opponentName = opponentName;
     game.accountHolderStarted = accountHolderStarted;
@@ -149,38 +150,6 @@ void SaveLastGame(UserData& host, const int moves[3][3], int won, bool accountHo
     }
 }
 
-
-void viewHistory(const UserData& user) {
-    cout << "User: " << user.username << endl;
-    if (user.games.empty()) {
-        cout << "No game history available." << endl;
-    }
-    else {
-        cout << "Game History : " << endl;
-        int c = 1;
-        for (const auto& game : user.games) {
-            cout <<  c++ << " -  Date: " << game.time << ", Won: " << game.won << ", account holder started ? " << game.accountHolderStarted << ", GameState: " << game.gamestate << endl;
-           }
-        cout << "accountHolder  " << "wins: " << wins(user.username) << " loses: " << loses(user.username) << " ties :" << ties(user.username) << endl;
-        int b = 0;
-		bool accountHolderStarted;
-		int log[3][3];
-        cout << "select Board : ";
-        cin >> b;
-        accountHolderStarted = user.games[b - 1].accountHolderStarted;
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                log[i][j] = user.games[b - 1].moves[i*3+j];
-            cout << endl;        
-
-			cout << "=============================log start================================" << endl;
-//			showLog(accountHolderStarted, log);
-			cout << "==============================log end=================================" << endl;;
-			
-    }
-}
-
-
 int wins(const string& username) {
     int c = 0;
     UserData user;
@@ -199,6 +168,7 @@ int wins(const string& username) {
     }
     return c;
 }
+
 int loses(const string& username) {
     int c = 0;
     UserData user;

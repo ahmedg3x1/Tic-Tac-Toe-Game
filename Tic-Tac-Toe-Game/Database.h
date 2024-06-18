@@ -11,6 +11,7 @@ enum register_result {null_user,register_correct,null_password,weak_password,use
 
 
 struct GameRecord {
+    string date;
     string time;
     string opponentName;
     bool accountHolderStarted;
