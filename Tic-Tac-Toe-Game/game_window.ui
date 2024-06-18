@@ -405,7 +405,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="game_buttons">
      <widget class="QPushButton" name="Play_Again">
@@ -572,7 +572,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="game_labels">
      <widget class="QLabel" name="game_label">

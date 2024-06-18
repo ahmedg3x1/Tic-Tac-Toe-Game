@@ -1,27 +1,20 @@
 #include "game_window.h"
 #include "ui_game_window.h"
-#include "Database.h"
 
 extern UserData loggedInHost, loggedInGuest;
 
 extern QString player_1_name, player_2_name;
 extern QString player_1_tic,  player_2_tic;
 
-game_window::game_window(QWidget *parent, bool PVAI, bool game)
+game_window::game_window(QWidget *parent, bool PVAI, bool NewGame, GameRecord Game)
     : QMainWindow(parent)
     , ui(new Ui::game_window)
     , aiEnable(PVAI)
 {
     ui->setupUi(this);
     myparent = parent;
-
-    PlayerOneBoardCode = (player_1_tic == "X") ? player_X : player_O;
-    PlayerTwoBoardCode = (player_2_tic == "X") ? player_X : player_O;
-
-    PlayerOneisStarting = true;     // Player One starts every first time
-    isPlayerOneTurn = true;         // Initialize the player turn to player one
-    ui->game_label->setText(player_1_name + QString(" Starts !"));
-
+    newGame = NewGame;
+    game = Game;
 
     Slot[0][0] = ui->Slot_1;
     Slot[0][1] = ui->Slot_2;
@@ -38,6 +31,42 @@ game_window::game_window(QWidget *parent, bool PVAI, bool game)
             board[i][j] = 0;
             timelog[i][j] = 0;
         }
+
+    if(newGame){
+        PlayerOneBoardCode = (player_1_tic == "X") ? player_X : player_O;
+        PlayerTwoBoardCode = (player_2_tic == "X") ? player_X : player_O;
+
+        PlayerOneisStarting = true;     // Player One starts every first time
+        isPlayerOneTurn = true;         // Initialize the player turn to player one
+
+        ui->game_label->setText(player_1_name + QString(" Starts !"));
+
+        ui->stackedTop->setCurrentWidget(ui->game_labels);
+        ui->stackedBottom->setCurrentWidget(ui->game_buttons);
+    }
+    else{
+        PlayerOneBoardCode = game.accountHolder;
+        PlayerTwoBoardCode = 3 - game.accountHolder;    // 3 - Player_X = Player_O & 3 - Player_O = Player_X
+
+        player_2_name = QString::fromStdString(game.opponentName);
+        player_1_tic = (PlayerOneBoardCode == player_X) ? QString("X") : QString("O");
+        player_2_tic = (PlayerTwoBoardCode == player_X) ? QString("X") : QString("O");
+
+        PlayerOneisStarting = game.accountHolderStarted;
+        isPlayerOneTurn = PlayerOneisStarting;
+
+        ui->history_label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
+        ui->first_player_name->setText("YOU");
+        ui->second_player_name->setText(player_2_name);
+        ui->first_player_tic->setText(player_1_tic);
+        ui->second_player_tic->setText(player_2_tic);
+
+        EnableSlots(false);
+        ui->Previous->setEnabled(false);
+
+        ui->stackedTop->setCurrentWidget(ui->history_labels);
+        ui->stackedBottom->setCurrentWidget(ui->history_buttons);
+    }
 }
 
 game_window::~game_window()
@@ -398,29 +427,42 @@ void game_window::controlGameFlow(int gameState)
     {
     case Continue_State:
         ui->game_label->setText("");
+        ui->history_label->setText("");
+        ui->Next->setEnabled(true);
+        ui->Previous->setEnabled(true);
         break;
 
     case Winner_State:
         EnableSlots(false);
+        ui->Next->setEnabled(false);
 
         switch (winner)
         {
         case player_X:
             ui->game_label->setText(((player_1_tic == "X") ? player_1_name : player_2_name) + QString(" Won !"));
+            ui->history_label->setText(((player_1_tic == "X") ? player_1_name : player_2_name) + QString(" Won !"));
             break;
 
         case player_O:
             ui->game_label->setText(((player_1_tic == "O") ? player_1_name : player_2_name) + QString(" Won !"));
+            ui->history_label->setText(((player_1_tic == "O") ? player_1_name : player_2_name) + QString(" Won !"));
             break;
         }
         break;
 
     case Tie_State:
         ui->game_label->setText("Tie !");
+        ui->history_label->setText("Tie !");
+        ui->Next->setEnabled(false);
+        break;
+
+    case Start_State:
+        ui->history_label->setText((PlayerOneisStarting ? player_1_name : player_2_name) + QString(" Starts !"));
+        ui->Back->setEnabled(false);
         break;
     }
 
-    if(gameState != Continue_State){
+    if(newGame && gameState != Continue_State){
         if(aiEnable)
             SaveLastGame(loggedInHost, timelog, winner, PlayerOneisStarting, gameState, PlayerOneBoardCode);
         else
@@ -435,5 +477,48 @@ void game_window::EnableSlots(bool state)
     for (int i = 0; i < 3; i++)
         for (int j = 0; j < 3; j++)
             Slot[i][j]->setEnabled(state);
+}
+
+
+void game_window::on_Next_clicked()
+{
+    int i;
+    for(i = 0; i < 9; ++i)
+        if(game.moves[i] == log_counter)
+            break;
+
+    ++log_counter;
+
+    Slot[i/3][i%3]->setText(isPlayerOneTurn ? player_1_tic : player_2_tic);
+    board[i/3][i%3] = isPlayerOneTurn ? PlayerOneBoardCode : PlayerTwoBoardCode;
+
+    isPlayerOneTurn = !isPlayerOneTurn;
+
+    controlGameFlow(checkGameState());
+}
+
+
+void game_window::on_Previous_clicked()
+{
+    --log_counter;
+
+    int i;
+    for(i = 0; i < 9; ++i)
+        if(game.moves[i] == log_counter)
+            break;
+
+    Slot[i/3][i%3]->setText("");
+    board[i/3][i%3] = 0;
+
+    isPlayerOneTurn = !isPlayerOneTurn;
+
+    controlGameFlow(checkGameState());
+}
+
+
+void game_window::on_Back_clicked()
+{
+    close();
+    myparent->show();
 }
 

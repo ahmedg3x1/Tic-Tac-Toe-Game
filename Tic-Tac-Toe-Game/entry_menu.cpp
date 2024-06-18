@@ -57,9 +57,10 @@ void entry_menu::on_profile_button_clicked()
 
 void entry_menu::on_history_button_clicked()
 {
-//    my_profile_menu = new profile_menu(this, true);
-//    my_profile_menu->show();
+    loadUserData(loggedInHost, loggedInHost.username + "_data.txt");
+    my_game_window = new game_window(this, false, false, loggedInHost.games[0]);
+    my_game_window->show();
 
-    viewHistory(loggedInHost);
+//    viewHistory(loggedInHost.games[0]);
 }
 

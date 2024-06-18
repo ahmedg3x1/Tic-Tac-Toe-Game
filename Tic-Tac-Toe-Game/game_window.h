@@ -1,6 +1,7 @@
 #ifndef GAME_WINDOW_H
 #define GAME_WINDOW_H
 
+#include "Database.h"
 #include <QMainWindow>
 #include <qpushbutton.h>
 
@@ -13,6 +14,7 @@ QT_END_NAMESPACE
 const int player_X = 1;     // player_X,player_O can not equal zero,
 const int player_O = 2;     // because Empty space = zero
 
+const int Start_State = -1;
 const int Continue_State = 0;
 const int Winner_State = 1;
 const int Tie_State = 2;
@@ -27,7 +29,7 @@ class game_window : public QMainWindow
     Q_OBJECT
 
 public:
-    game_window(QWidget *parent = nullptr, bool PVAI = false, bool game = true);
+    game_window(QWidget *parent = nullptr, bool PVAI = false, bool NewGame = true, GameRecord Game = {});
     ~game_window();
 
 private slots:
@@ -53,11 +55,21 @@ private slots:
 
     void on_Play_Again_clicked();
 
+    void on_Next_clicked();
+
+    void on_Previous_clicked();
+
+    void on_Back_clicked();
+
 private:
     Ui::game_window *ui;
     QWidget* myparent;
 
     QPushButton* Slot[3][3];
+
+    GameRecord game;
+
+    bool newGame;            // true -> game, false -> history
 
     bool aiEnable;
 
