@@ -1,31 +1,30 @@
 #pragma once
-#include <fstream>
-#include <iostream> 
-#include <vector>
-#include <sstream>
 #include <cstring>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <vector>
 using namespace std;
 
-enum login_result {user_wrong,login_correct,password_wrong,database_error};
-enum register_result {null_user,register_correct,null_password,weak_password,user_is_already_registered,bad_user};
-
+enum login_result { user_wrong, login_correct, password_wrong, database_error };
+enum register_result { null_user, register_correct, null_password, weak_password, user_is_already_registered, bad_user };
 
 struct GameRecord {
-    string date;
-    string time;
-    string opponentName;
-    bool accountHolderStarted;
-    int accountHolder;
-    int won;
-    int moves[9];
-     
-    int gamestate;  
+  string date;
+  string time;
+  string opponentName;
+  bool accountHolderStarted;
+  int accountHolder;
+  int won;
+  int moves[9];
+
+  int gamestate;
 };
 
 struct UserData {
-    string username;
-    string passwordHash; // Store hashed password instead of plain password
-    vector<GameRecord> games; // Use vector to store multiple game records
+  string username;
+  string passwordHash;       // Store hashed password instead of plain password
+  vector<GameRecord> games;  // Use vector to store multiple game records
 };
 
 bool fileExists(const string& filename);
@@ -40,5 +39,3 @@ int wins(const string& username);
 int loses(const string& username);
 int ties(const string& username);
 string md5(std::string dat);
-
-
