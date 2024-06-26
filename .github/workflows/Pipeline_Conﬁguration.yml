@@ -1,0 +1,62 @@
+name: Pipeline Conﬁguration
+"on":
+    push:
+        paths:
+          - '**.cpp'
+          - '**.h'
+          - '**.ui'
+          - 'CMakeLists.txt'
+jobs:
+    Build-Project:
+        name: CI/CD Pipeline Conﬁguration
+        runs-on: windows-latest
+        permissions:                   
+            contents: write
+        steps:
+        - name: Install Qt
+          uses: jurplel/install-qt-action@v4
+          with:
+            version: '6.7.0'
+            host: 'windows'
+            target: 'desktop'
+            arch: 'win64_mingw'
+            tools: 'tools_mingw90'
+            
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Build
+          run: |
+            cmake -G  "MinGW Makefiles"
+            make
+            
+        - name: Run Google Test
+          run: | 
+            pip install gcovr
+            .\googletest-part.exe --gtest_color=yes 
+            mkdir coverage
+            gcovr -r . --filter src --html-nested coverage/Coverage_Report.html
+            
+        - name: Upload Coverage Report 
+          uses: actions/upload-artifact@v4
+          with:
+            name: Coverage_Report-v1.0.${{ github.run_number }}
+            path: coverage
+
+        - name: Create Executable File
+          run: |
+            mkdir Tic-Tac-Toe-Game-win_x64-v1.0.${{ github.run_number }}
+            copy Tic-Tac-Toe-Game.exe Tic-Tac-Toe-Game-win_x64-v1.0.${{ github.run_number }}\Tic-Tac-Toe-Game.exe
+            windeployqt Tic-Tac-Toe-Game-win_x64-v1.0.${{ github.run_number }}\Tic-Tac-Toe-Game.exe  
+        - name: Prepare Release Files
+          uses: thedoctor0/zip-release@0.7.5
+          with:
+            path: Tic-Tac-Toe-Game-win_x64-v1.0.${{ github.run_number }}
+            filename: Tic-Tac-Toe-Game-win_x64-v1.0.${{ github.run_number }}.zip
+            
+        - name: Release The Executable File
+          uses: ncipollo/release-action@v1
+          with:
+            artifacts: Tic-Tac-Toe-Game-win_x64-v1.0.${{ github.run_number }}.zip
+            tag: v1.0.${{ github.run_number }}
+            name: Release v1.0.${{ github.run_number }}
