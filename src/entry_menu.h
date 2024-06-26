@@ -30,10 +30,10 @@ class entry_menu : public QMainWindow {
 
   void on_logout_button_clicked();
 
-  protected:
+ protected:
   void closeEvent(QCloseEvent *event) override;
 
-  private:
+ private:
   Ui::entry_menu *ui;
   QWidget *myparent;
   login_window *my_login_window;

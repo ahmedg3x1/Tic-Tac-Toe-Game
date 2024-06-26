@@ -1,7 +1,7 @@
 #include <QString>
 
-#include "profile_menu.h"
 #include "../ui/ui_profile_menu.h"
+#include "profile_menu.h"
 
 extern UserData loggedInHost, loggedInGuest;
 
@@ -12,8 +12,7 @@ profile_menu::profile_menu(QWidget *parent, bool history) : QMainWindow(parent),
   myparent = parent;
 
   if (history) {
-
-      ui->replay->setEnabled(false);
+    ui->replay->setEnabled(false);
 
     // create the hitory table
     model = new QStandardItemModel(this);
@@ -30,7 +29,9 @@ profile_menu::profile_menu(QWidget *parent, bool history) : QMainWindow(parent),
         row.append(new QStandardItem(QString::fromStdString(match.time)));
         row.append(new QStandardItem(QString::fromStdString(match.opponentName)));
         row.append(new QStandardItem(
-            (match.won == 0) ? "Tie" : ((match.won == match.accountHolder) ? "YOU" : QString::fromStdString(match.opponentName))));
+            (match.won == 0)
+                ? "Tie"
+                : ((match.won == match.accountHolder) ? "YOU" : QString::fromStdString(match.opponentName))));
         row.append(new QStandardItem(match.accountHolderStarted ? "YOU" : QString::fromStdString(match.opponentName)));
         model->appendRow(row);
       }
@@ -66,6 +67,6 @@ void profile_menu::on_replay_clicked() {
 void profile_menu::on_back_clicked() { close(); }
 
 void profile_menu::on_match_list_clicked(const QModelIndex &index) {
-    ui->replay->setEnabled(true);
-    selected_match = loggedInHost.games[index.row()];
+  ui->replay->setEnabled(true);
+  selected_match = loggedInHost.games[index.row()];
 }

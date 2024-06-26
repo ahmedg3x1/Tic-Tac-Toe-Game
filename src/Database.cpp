@@ -18,8 +18,8 @@ void saveUserData(const UserData& user) {
   }
   file << user.username << " " << user.passwordHash << endl;  // Save username and password hash
   for (const auto& game : user.games) {
-    file << game.date << " " << game.time << " " << game.opponentName << " " << game.accountHolderStarted << " " << game.accountHolder
-         << " " << game.won << " " << game.gamestate << " ";
+    file << game.date << " " << game.time << " " << game.opponentName << " " << game.accountHolderStarted << " "
+         << game.accountHolder << " " << game.won << " " << game.gamestate << " ";
     for (int i = 0; i < 9; ++i) {
       file << game.moves[i] << " ";  // Save moves array
     }
@@ -43,7 +43,8 @@ void loadUserData(UserData& user, const string& filename) {
   while (getline(file, line)) {
     stringstream ss(line);
     GameRecord game;
-    ss >> game.date >> game.time >> game.opponentName >> game.accountHolderStarted >> game.accountHolder >> game.won >> game.gamestate;
+    ss >> game.date >> game.time >> game.opponentName >> game.accountHolderStarted >> game.accountHolder >> game.won >>
+        game.gamestate;
     for (int i = 0; i < 9; ++i) {
       ss >> game.moves[i];  // Load moves array
     }
@@ -108,8 +109,8 @@ login_result login(UserData& loggedInUser) {
   return database_error;
 }
 
-void SaveLastGame(UserData& host, const int moves[3][3], int won, bool accountHolderStarted, int gamestate, int accountHolder, bool PVP,
-                  string opponentName, UserData* guest) {
+void SaveLastGame(UserData& host, const int moves[3][3], int won, bool accountHolderStarted, int gamestate,
+                  int accountHolder, bool PVP, string opponentName, UserData* guest) {
   struct tm* newtime;
   time_t now = time(0);
   newtime = localtime(&now);
@@ -215,9 +216,9 @@ int ties(const string& username) {
 #define SET(n) (*(MD5_u32*)&ptr[(n)*4])
 #define GET(n) SET(n)
 #else
-#define SET(n)       \
-  (ctx->block[(n)] = \
-       (MD5_u32)ptr[(n)*4] | ((MD5_u32)ptr[(n)*4 + 1] << 8) | ((MD5_u32)ptr[(n)*4 + 2] << 16) | ((MD5_u32)ptr[(n)*4 + 3] << 24))
+#define SET(n)                                                                                                \
+  (ctx->block[(n)] = (MD5_u32)ptr[(n)*4] | ((MD5_u32)ptr[(n)*4 + 1] << 8) | ((MD5_u32)ptr[(n)*4 + 2] << 16) | \
+                     ((MD5_u32)ptr[(n)*4 + 3] << 24))
 #define GET(n) (ctx->block[(n)])
 #endif
 

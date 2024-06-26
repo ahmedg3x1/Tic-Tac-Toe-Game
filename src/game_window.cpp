@@ -1,5 +1,5 @@
-#include "game_window.h"
 #include "../ui/ui_game_window.h"
+#include "game_window.h"
 
 extern UserData loggedInHost, loggedInGuest;
 
@@ -419,8 +419,8 @@ void game_window::controlGameFlow(int gameState) {
     if (aiEnable)
       SaveLastGame(loggedInHost, timelog, winner, PlayerOneisStarting, gameState, PlayerOneBoardCode);
     else
-      SaveLastGame(loggedInHost, timelog, winner, PlayerOneisStarting, gameState, PlayerOneBoardCode, true, loggedInGuest.username,
-                   &loggedInGuest);
+      SaveLastGame(loggedInHost, timelog, winner, PlayerOneisStarting, gameState, PlayerOneBoardCode, true,
+                   loggedInGuest.username, &loggedInGuest);
   }
   return;
 }
@@ -464,4 +464,3 @@ void game_window::on_Back_clicked() {
   close();
   myparent->show();
 }
-

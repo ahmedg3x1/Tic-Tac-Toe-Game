@@ -1,17 +1,16 @@
-#include "entry_menu.h"
 #include "../ui/ui_entry_menu.h"
+#include "entry_menu.h"
 
 entry_menu::entry_menu(QWidget *parent) : QMainWindow(parent), ui(new Ui::entry_menu) {
-    ui->setupUi(this);
-    myparent = parent;
+  ui->setupUi(this);
+  myparent = parent;
 }
 
 entry_menu::~entry_menu() { delete ui; }
 
-void entry_menu::closeEvent(QCloseEvent *event)
-{
-    // Ensure that the entire application quits when the entry window is closed
-    QApplication::quit();
+void entry_menu::closeEvent(QCloseEvent *event) {
+  // Ensure that the entire application quits when the entry window is closed
+  QApplication::quit();
 }
 
 void entry_menu::on_entry_menu_destroyed() { close(); }
@@ -51,9 +50,7 @@ void entry_menu::on_history_button_clicked() {
   my_profile_menu->show();
 }
 
-void entry_menu::on_logout_button_clicked()
-{
-    close();
-    myparent->show();
+void entry_menu::on_logout_button_clicked() {
+  close();
+  myparent->show();
 }
-
