@@ -1,7 +1,7 @@
 #include <QString>
 
 #include "profile_menu.h"
-#include "ui_profile_menu.h"
+#include "../ui/ui_profile_menu.h"
 
 extern UserData loggedInHost, loggedInGuest;
 

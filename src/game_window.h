@@ -62,7 +62,7 @@ class game_window : public QMainWindow {
 
   void on_Back_clicked();
 
-  private:
+  public:
   Ui::game_window* ui;
   QWidget* myparent;
 

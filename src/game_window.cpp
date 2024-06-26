@@ -1,5 +1,5 @@
 #include "game_window.h"
-#include "ui_game_window.h"
+#include "../ui/ui_game_window.h"
 
 extern UserData loggedInHost, loggedInGuest;
 

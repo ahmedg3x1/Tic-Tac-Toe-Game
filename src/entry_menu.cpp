@@ -1,5 +1,5 @@
 #include "entry_menu.h"
-#include "ui_entry_menu.h"
+#include "../ui/ui_entry_menu.h"
 
 entry_menu::entry_menu(QWidget *parent) : QMainWindow(parent), ui(new Ui::entry_menu) {
     ui->setupUi(this);

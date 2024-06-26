@@ -1,7 +1,7 @@
 #include "Database.h"
 #include "entry_menu.h"
 #include "register_window.h"
-#include "ui_register_window.h"
+#include "../ui/ui_register_window.h"
 
 register_window::register_window(QWidget *parent) : ui(new Ui::register_window) {
   myparent = parent;
