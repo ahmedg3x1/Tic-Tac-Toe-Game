@@ -12,6 +12,9 @@ profile_menu::profile_menu(QWidget *parent, bool history) : QMainWindow(parent),
   myparent = parent;
 
   if (history) {
+
+      ui->replay->setEnabled(false);
+
     // create the hitory table
     model = new QStandardItemModel(this);
     model->setHorizontalHeaderLabels({"Date", "Time", "Opponent", "Winner", "Starting Player"});
@@ -62,4 +65,7 @@ void profile_menu::on_replay_clicked() {
 
 void profile_menu::on_back_clicked() { close(); }
 
-void profile_menu::on_match_list_clicked(const QModelIndex &index) { selected_match = loggedInHost.games[index.row()]; }
+void profile_menu::on_match_list_clicked(const QModelIndex &index) {
+    ui->replay->setEnabled(true);
+    selected_match = loggedInHost.games[index.row()];
+}
