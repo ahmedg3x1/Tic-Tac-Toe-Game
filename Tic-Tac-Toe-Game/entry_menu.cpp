@@ -1,9 +1,20 @@
 #include "entry_menu.h"
 #include "ui_entry_menu.h"
 
-entry_menu::entry_menu(QWidget *parent) : QMainWindow(parent), ui(new Ui::entry_menu) { ui->setupUi(this); }
+entry_menu::entry_menu(QWidget *parent) : QMainWindow(parent), ui(new Ui::entry_menu) {
+    ui->setupUi(this);
+    myparent = parent;
+}
 
 entry_menu::~entry_menu() { delete ui; }
+
+void entry_menu::closeEvent(QCloseEvent *event)
+{
+    // Ensure that the entire application quits when the entry window is closed
+    QApplication::quit();
+}
+
+void entry_menu::on_entry_menu_destroyed() { close(); }
 
 void entry_menu::on_pvp_button_clicked() {
   // should make game window and pass the Game class object as member to it
@@ -26,8 +37,6 @@ void entry_menu::on_pvai_button_clicked() {
   my_login_window->show();
 }
 
-void entry_menu::on_entry_menu_destroyed() { close(); }
-
 void entry_menu::on_profile_button_clicked() {
   my_profile_menu = new profile_menu(this, false);
   my_profile_menu->setWindowModality(Qt::ApplicationModal);
@@ -41,3 +50,10 @@ void entry_menu::on_history_button_clicked() {
 
   my_profile_menu->show();
 }
+
+void entry_menu::on_logout_button_clicked()
+{
+    close();
+    myparent->show();
+}
+

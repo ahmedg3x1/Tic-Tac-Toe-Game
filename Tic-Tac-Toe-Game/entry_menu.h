@@ -28,8 +28,14 @@ class entry_menu : public QMainWindow {
 
   void on_history_button_clicked();
 
- private:
+  void on_logout_button_clicked();
+
+  protected:
+  void closeEvent(QCloseEvent *event) override;
+
+  private:
   Ui::entry_menu *ui;
+  QWidget *myparent;
   login_window *my_login_window;
   profile_menu *my_profile_menu;
 };

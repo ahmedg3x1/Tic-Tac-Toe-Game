@@ -464,3 +464,4 @@ void game_window::on_Back_clicked() {
   close();
   myparent->show();
 }
+
