@@ -56,7 +56,7 @@ set(TESTS
 )
 
 add_executable(
-    Tic-Tac-Toe-Game
+    Tic-Tac-Toe-Game WIN32
     ${MAIN}
     ${SOURCES}
     ${HEADERS}

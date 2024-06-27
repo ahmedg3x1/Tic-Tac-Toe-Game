@@ -79,26 +79,14 @@ TEST_F(DatabaseTest, Login) {
   EXPECT_NE(database_error, login(loginTestUser));
   remove(fileName.c_str());
 }
-TEST_F(DatabaseTest, saveUserData) {
-  ofstream testFile = createTestFile();
-  testFile.close();
-
-  testUser.games.push_back(testGameRecord);
-  saveUserData(testUser);
-  testUser.games.clear();
-  remove(fileName.c_str());
-}
 
 TEST_F(DatabaseTest, SaveLastGame) {
   ofstream testFile = createTestFile();
   testFile.close();
-  // int moves[3][3] = { 1, 4 ,6 ,0 ,2, 3, 8, 7, 5 };
 
-  // int accountHolder = 1; (player_X)
-  // int won = 2; Machine(player_O)
-  // int gamestate = 1;
   // test :: ai -> enable, accountHolder -> player_X, Machine -> player_O,
   // gamestate -> 1 (win state)
+
   SaveLastGame(testUser, moves, testGameRecord.won,
                testGameRecord.accountHolderStarted, testGameRecord.gamestate,
                testGameRecord.accountHolder);

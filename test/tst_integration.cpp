@@ -44,7 +44,7 @@ TEST_F(IntegrationTest, integration_test) {
   game.playerMove(1, 2, game.PlayerOneBoardCode);
 
   game.playerMove(2, 2, game.PlayerOneBoardCode);
-  // std::cout <<"\n" << game.checkGameState()<<" "<< game.winner;
+
   SaveLastGame(testUser, game.board, game.winner, true, game.checkGameState(), game.PlayerOneBoardCode);
   loadUserData(testUser, fileName);
   GameRecord gameRecord = testUser.games[0];
