@@ -42,6 +42,14 @@ void register_window::on_register_button_clicked() {
   }
 }
 
+void register_window::closeEvent(QCloseEvent *event)
+{
+    // Schedule the window for deletion after the event loop has processed all events
+    this->deleteLater();
+    // Optionally, call the base class implementation if needed
+    QWidget::closeEvent(event);
+}
+
 extern void register_window::on_cancel_button_clicked() {
   ui->username->clear();
   ui->password->clear();

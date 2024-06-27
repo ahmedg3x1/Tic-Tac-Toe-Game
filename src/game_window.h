@@ -28,9 +28,12 @@ const int EMPTY = 0;
 
 class game_window : public QMainWindow {
   Q_OBJECT
+    protected:
+    void closeEvent(QCloseEvent *event) override;
 
  public:
   game_window(QWidget* parent = nullptr, bool PVAI = false, bool NewGame = true, GameRecord Game = {});
+
   ~game_window();
 
  private slots:

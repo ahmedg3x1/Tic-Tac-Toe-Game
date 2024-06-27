@@ -13,7 +13,8 @@ class profile_menu;
 
 class profile_menu : public QMainWindow {
   Q_OBJECT
-
+protected:
+    void closeEvent(QCloseEvent *event) override;
  public:
   explicit profile_menu(QWidget *parent = nullptr, bool history = false);
   ~profile_menu();

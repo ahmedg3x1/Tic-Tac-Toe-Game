@@ -51,6 +51,7 @@ void entry_menu::on_history_button_clicked() {
 }
 
 void entry_menu::on_logout_button_clicked() {
-  close();
+  hide();
   myparent->show();
+
 }

@@ -6,6 +6,7 @@ extern UserData loggedInHost, loggedInGuest;
 extern QString player_1_name, player_2_name;
 extern QString player_1_tic, player_2_tic;
 
+
 game_window::game_window(QWidget *parent, bool PVAI, bool NewGame, GameRecord Game)
     : QMainWindow(parent), ui(new Ui::game_window), aiEnable(PVAI) {
   ui->setupUi(this);
@@ -66,6 +67,16 @@ game_window::game_window(QWidget *parent, bool PVAI, bool NewGame, GameRecord Ga
 }
 
 game_window::~game_window() { delete ui; }
+
+
+void game_window::closeEvent(QCloseEvent *event)
+{
+    // Schedule the window for deletion after the event loop has processed all events
+    this->deleteLater();
+    // Optionally, call the base class implementation if needed
+    QWidget::closeEvent(event);
+}
+
 
 void game_window::on_Slot_1_clicked() {
   // Check if the button is already clicked and contains 'X' or 'O'

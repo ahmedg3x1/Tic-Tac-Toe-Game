@@ -55,6 +55,16 @@ profile_menu::~profile_menu() { delete ui; }
 
 void profile_menu::on_profile_menu_destroyed() {}
 
+\
+void profile_menu::closeEvent(QCloseEvent *event)
+{
+    // Schedule the window for deletion after the event loop has processed all events
+    this->deleteLater();
+    // Optionally, call the base class implementation if needed
+    QWidget::closeEvent(event);
+}
+
+
 void profile_menu::on_profile_menu_destroyed(QObject *arg1) {}
 
 void profile_menu::on_replay_clicked() {

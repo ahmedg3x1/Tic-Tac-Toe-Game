@@ -10,6 +10,8 @@ class register_window;
 class register_window : public QMainWindow {
   Q_OBJECT
 
+ protected:
+    void closeEvent(QCloseEvent *event) override;
  public:
   register_window(QWidget *parent = nullptr);
   QWidget *myparent;
